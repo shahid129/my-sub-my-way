@@ -22,6 +22,7 @@ sandwich_list = sandwich.col_values(3)[1:]  # List of Sandwiches in spreadsheet
 customer = SHEET.worksheet("customer")
 # print(customer.get_all_values())
 
+# Rcords all the input by customers in this list
 customer_details = []
 
 name = input("Please enter your name: ")
@@ -83,31 +84,31 @@ def choose_sandwich():
     and the name of the sandwich is saved in google sheet
     in customer page.
     """
-    print("Please enter a number between 1 to 6 to select your sandwich")
+    print("\nPlease enter a number between 1 to 6 to select your sandwich")
     while True:
-        choose = input("please Choose your sandwich: ")
+        choose = input("\nPlease choose your sandwich: ")
         if choose == "1":
-            print(f"You Chose {sandwich.col_values(3)[1]}, awesome!!")
+            print(f"\nYou chose {sandwich.col_values(3)[1]}, awesome!!")
             customer_details.append(sandwich.col_values(3)[1])
             break
         elif choose == "2":
-            print(f"You Chose {sandwich.col_values(3)[2]}, awesome!!")
+            print(f"\nYou chose {sandwich.col_values(3)[2]}, awesome!!")
             customer_details.append(sandwich.col_values(3)[2])
             break
         elif choose == "3":
-            print(f"You Chose {sandwich.col_values(3)[3]}, awesome!!")
+            print(f"\nYou chose {sandwich.col_values(3)[3]}, awesome!!")
             customer_details.append(sandwich.col_values(3)[3])
             break
         elif choose == "4":
-            print(f"You Chose {sandwich.col_values(3)[4]}, awesome!!")
+            print(f"\nYou chose {sandwich.col_values(3)[4]}, awesome!!")
             customer_details.append(sandwich.col_values(3)[4])
             break
         elif choose == "5":
-            print(f"You Chose {sandwich.col_values(3)[5]}, awesome!!")
+            print(f"\nYou chose {sandwich.col_values(3)[5]}, awesome!!")
             customer_details.append(sandwich.col_values(3)[5])
             break
         elif choose == "6":
-            print(f"You Chose {sandwich.col_values(3)[6]}, awesome!!")
+            print(f"\nYou chose {sandwich.col_values(3)[6]}, awesome!!")
             customer_details.append(sandwich.col_values(3)[6])
             break
         else:
@@ -117,3 +118,19 @@ def choose_sandwich():
 
 
 choose_sandwich()
+
+
+# Records all the details in customer_details list(created in line 26)
+# and this list gets updated in the customer page of google sheet.
+customer.append_row(customer_details)
+
+
+# Obtain the values from the last row of google sheet
+cusomter_all_value = customer.get_all_values()
+last_row_customer = cusomter_all_value[-1]
+
+# Print the values from the last row of google sheet.
+# This can be printed by calling the customer_details list.
+# But i wanted to call it from API
+print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
+ {last_row_customer[2]}")
