@@ -18,6 +18,8 @@ SHEET = GSPREAD_CLIENT.open("MySubMyWay")
 
 sandwich = SHEET.worksheet("Sheet1")
 sandwich_list = sandwich.col_values(3)[1:]  # List of Sandwiches in spreadsheet
+bread_list = sandwich.col_values(2)[1:]  # List of Breads in spreadsheet
+
 
 customer = SHEET.worksheet("customer")
 # print(customer.get_all_values())
@@ -45,7 +47,7 @@ def sandwich_size():
         elif sub == "b":
             customer_details.append("6 Inch")
             print("\nGreat choice, you choose a Six Inch")
-            print("Here are your choices")
+            print("\nHere are your choices")
             break
         else:
             print("Please type a or b")
@@ -54,6 +56,27 @@ def sandwich_size():
 
 
 sandwich_size()
+
+
+def bread_names():
+    """
+    Prints a list of bread list from the spreadsheet.
+    """
+    time.sleep(1)  # sleep for 1 second
+    bread_name = []
+    for brd_name in bread_list:
+        bread_name.append(brd_name)
+    num = []
+    for i in range(1, 5):
+        num.append(i)
+
+    names = dict(zip(num, bread_name))
+    for number, bread in names.items():
+        print(number, bread)
+    return bread_name
+
+
+bread_names()
 
 
 def sandwich_names():
