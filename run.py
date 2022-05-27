@@ -15,5 +15,40 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("MySubMyWay")
 
-sandwich = SHEET.worksheet("Sheet1").get_all_values()
-print(sandwich)
+sandwich = SHEET.worksheet("Sheet1")
+sandwich_list = sandwich.col_values(2)[1:]  # List of Sandwiches in spreadsheet
+
+customer = SHEET.worksheet("customer")
+# print(customer.get_all_values())
+
+customer_details = []
+
+name = input("Please enter your name: ")
+print(f"Welcome to Subway {name}")
+customer_details.append(name)
+
+
+def sandwich_size():
+    """
+    Describes the size of the sandwich
+    """
+    while True:
+        sub = input("\nwhat would you like to have today: a) Footlong\
+            b) 6 Inch\n")
+        if sub == "a":
+            customer_details.append("Footlong")
+            print("great choice, you chose Footlong\n")
+            print("here are your choices")
+            break
+        elif sub == "b":
+            customer_details.append("6 Inch")
+            print("you choose a six Inch")
+            print("here are your choices")
+            break
+        else:
+            print("Please type a or b")
+            continue
+    return sub
+
+
+sandwich_size()
