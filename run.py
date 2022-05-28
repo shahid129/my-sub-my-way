@@ -28,7 +28,7 @@ customer = SHEET.worksheet("customer")
 customer_details = []
 
 name = input("Please enter your name: ")
-print(f"Welcome to Subway {name}")
+print(f"Welcome to MySubMyWay {name}")
 customer_details.append(name)
 
 
@@ -37,17 +37,17 @@ def sandwich_size():
     Describes the size of the sandwich
     """
     while True:
-        sub = input("\nWhat would you like to have today: \
-            a) Footlong b) 6 Inch\n")
+        sub = input("\nWhat would you like to have today:\
+        a) Footlong b) 6 Inch\n")
         if sub == "a":
             customer_details.append("Footlong")
             print("\nGreat choice, you chose Footlong\n")
-            print("Here are your choices")
+            # print("Here are your choices")
             break
         elif sub == "b":
             customer_details.append("6 Inch")
             print("\nGreat choice, you choose a Six Inch")
-            print("\nHere are your choices")
+            # print("\nHere are your choices")
             break
         else:
             print("Please type a or b")
@@ -62,6 +62,8 @@ def bread_names():
     """
     Prints a list of bread list from the spreadsheet.
     """
+    print("\nWhat bread would you like to have?")
+    print("\nYour options are")
     time.sleep(1)  # sleep for 1 second
     bread_name = []
     for brd_name in bread_list:
@@ -79,11 +81,45 @@ def bread_names():
 bread_names()
 
 
+def choose_bread():
+    """
+    User can choose a bread using the number from 1 to 4
+
+    """
+    print("\nPlease enter a number between 1 to 4")
+    while True:
+        brd = input("\nPlease Choose your Bread: ")
+        if brd == "1":
+            print(f"\nYou Chose {sandwich.col_values(2)[1]}, awesome!!")
+            customer_details.append(sandwich.col_values(2)[1])
+            break
+        elif brd == "2":
+            print(f"\nYou Chose {sandwich.col_values(2)[2]}, awesome!!")
+            customer_details.append(sandwich.col_values(2)[2])
+            break
+        elif brd == "3":
+            print(f"\nYou Chose {sandwich.col_values(2)[3]}, awesome!!")
+            customer_details.append(sandwich.col_values(2)[3])
+            break
+        elif brd == "4":
+            print(f"\nYou Chose {sandwich.col_values(2)[4]}, awesome!!")
+            customer_details.append(sandwich.col_values(2)[4])
+            break
+        else:
+            print("\Please type a number between 1 to 4.")
+            continue
+    return brd
+
+
+choose_bread()
+
+
 def sandwich_names():
     """
     A function to fetch all the name of sandwich from
     Google Sheet and print in the console.
     """
+    print("\nWhat would you like in your sandwich?")
     sandwich_name = []
     for sand_name in sandwich_list:
         sandwich_name.append(sand_name)
@@ -156,4 +192,4 @@ last_row_customer = cusomter_all_value[-1]
 # This can be printed by calling the customer_details list.
 # But i wanted to call it from API
 print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
- {last_row_customer[2]}")
+ {last_row_customer[2]} bread with {last_row_customer[3]} ")
