@@ -19,6 +19,7 @@ SHEET = GSPREAD_CLIENT.open("MySubMyWay")
 sandwich = SHEET.worksheet("Sheet1")
 sandwich_list = sandwich.col_values(3)[1:]  # List of Sandwiches in spreadsheet
 bread_list = sandwich.col_values(2)[1:]  # List of Breads in spreadsheet
+cheese_list = sandwich.col_values(4)[1:]  # List of Cheese in spreadsheet
 
 
 customer = SHEET.worksheet("customer")
@@ -106,7 +107,7 @@ def choose_bread():
             customer_details.append(sandwich.col_values(2)[4])
             break
         else:
-            print("\Please type a number between 1 to 4.")
+            print("\nPlease type a number between 1 to 4.")
             continue
     return brd
 
@@ -178,6 +179,44 @@ def choose_sandwich():
 
 choose_sandwich()
 
+
+def cheese_names():
+    """
+    Prints a list of cheese list from the spreadsheet.
+    """
+    print("\nWhat cheese would you like to have?")
+    print("\nYour options are")
+    time.sleep(1)  # sleep for 1 second
+    cheese_name = []
+    for chse_name in cheese_list:
+        cheese_name.append(chse_name)
+    num = []
+    for i in range(1, 4):
+        num.append(i)
+
+    names = dict(zip(num, cheese_name))
+    for numb, cheese in names.items():
+        print(numb, cheese)
+    return cheese_name
+
+
+def choose_cheese():
+    """
+    Returns list of cheese from spreadsheet
+    if the user choses y
+    """
+    while True:
+        cheese = input("\nWould you like to have cheese? y/n ")
+        if cheese == "y":
+            return cheese_names()
+        elif cheese == "n":
+            print("\nThank you")
+            break
+        else:
+            print("\nPlease type 'y' or 'n' ")
+
+
+choose_cheese()
 
 # Records all the details in customer_details list(created in line 26)
 # and this list gets updated in the customer page of google sheet.
