@@ -200,6 +200,31 @@ def cheese_names():
     return cheese_name
 
 
+def select_cheese():
+    """
+    A function where user can select their cheese
+    """
+    while True:
+        which_cheese = input("\nWhich cheese would you like to have? ")
+        if which_cheese == "1":
+            print(f"\nYou chose {sandwich.col_values(4)[1]} cheese,\
+ great choice!!")
+            customer_details.append(sandwich.col_values(4)[1])
+            break
+        elif which_cheese == "2":
+            print(f"\nYou chose {sandwich.col_values(4)[2]} cheese,\
+ great choice!!")
+            customer_details.append(sandwich.col_values(4)[2])
+            break
+        elif which_cheese == "3":
+            print(f"\nYou chose {sandwich.col_values(4)[3]} cheese,\
+ great choice!!")
+            customer_details.append(sandwich.col_values(4)[3])
+            break
+        else:
+            print("\nPlease type between 1, 2 or 3")
+
+
 def choose_cheese():
     """
     Returns list of cheese from spreadsheet
@@ -208,7 +233,8 @@ def choose_cheese():
     while True:
         cheese = input("\nWould you like to have cheese? y/n ")
         if cheese == "y":
-            return cheese_names()
+            # Returns theese two function if users wants cheese
+            return cheese_names(), select_cheese()
         elif cheese == "n":
             print("\nThank you")
             break
@@ -231,4 +257,5 @@ last_row_customer = cusomter_all_value[-1]
 # This can be printed by calling the customer_details list.
 # But i wanted to call it from API
 print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
- {last_row_customer[2]} bread with {last_row_customer[3]} ")
+ {last_row_customer[2]} bread with {last_row_customer[3]}\
+ topped with {last_row_customer[4]}")
