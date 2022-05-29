@@ -20,7 +20,7 @@ sandwich = SHEET.worksheet("Sheet1")
 sandwich_list = sandwich.col_values(3)[1:]  # List of Sandwiches in spreadsheet
 bread_list = sandwich.col_values(2)[1:]  # List of Breads in spreadsheet
 cheese_list = sandwich.col_values(4)[1:]  # List of Cheese in spreadsheet
-
+salad_list = sandwich.col_values(5)[1:]  # List of Salads in spreadsheet
 
 customer = SHEET.worksheet("customer")
 # print(customer.get_all_values())
@@ -244,6 +244,30 @@ def choose_cheese():
 
 choose_cheese()
 
+
+def salad_names():
+    """
+    A function to fetch all the name of salads from
+    Google Sheet and print in the console.
+    """
+    print("\nWhich salad would you like in your sandwich?")
+    salad_name = []
+    for sld_name in salad_list:
+        salad_name.append(sld_name)
+    num = []
+    for i in range(1, 7):
+        num.append(i)
+    time.sleep(1)
+
+    names = dict(zip(num, salad_name))
+    for n, salad in names.items():
+        print(n, salad)
+    return salad_name
+
+
+salad_names()
+
+
 # Records all the details in customer_details list(created in line 26)
 # and this list gets updated in the customer page of google sheet.
 customer.append_row(customer_details)
@@ -258,4 +282,4 @@ last_row_customer = cusomter_all_value[-1]
 # But i wanted to call it from API
 print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
  {last_row_customer[2]} bread with {last_row_customer[3]}\
- topped with {last_row_customer[4]}")
+ topped with {last_row_customer[4]} cheese")
