@@ -21,6 +21,8 @@ sandwich_list = sandwich.col_values(3)[1:]  # List of Sandwiches in spreadsheet
 bread_list = sandwich.col_values(2)[1:]  # List of Breads in spreadsheet
 cheese_list = sandwich.col_values(4)[1:]  # List of Cheese in spreadsheet
 salad_list = sandwich.col_values(5)[1:]  # List of Salads in spreadsheet
+sauce_list = sandwich.col_values(6)[1:]  # List of Sauces in spreadsheet
+
 
 customer = SHEET.worksheet("customer")
 # print(customer.get_all_values())
@@ -278,9 +280,9 @@ def get_salad_from_user():
     """
     while True:
         # accept input from user as list of items
-        choose_salad = list(input("\nwhat salad would you like to have? "))
         print("\nPlease type in the following format 123456,\
 without space between numbers")
+        choose_salad = list(input("\nwhat salad would you like to have? "))
         # Sort out the list from low to high
         choose_salad.sort()
         # convert the list of items to integer
@@ -305,6 +307,32 @@ without space between numbers")
 
 
 get_salad_from_user()
+
+
+def sauce_names():
+    """
+    A function to fetch all the name of sauces from
+    Google Sheet and print in the console.
+    """
+    print("\nSauce selections are - ")
+    sauce_name = []
+    for sce_name in sauce_list:
+        sauce_name.append(sce_name)
+    num = []
+    for i in range(1, 7):
+        num.append(i)
+    time.sleep(1)
+    # the variable "names" at bottom is assigned to the
+    # function sauce_names  so that it can be
+    # accessed from other functions
+    sauce_names.names = dict(zip(num, sauce_name))
+    for num, sauce in sauce_names.names.items():
+        print(num, sauce)
+
+    return sauce_name
+
+
+sauce_names()
 
 
 # Records all the details in customer_details list(created in line 26)
