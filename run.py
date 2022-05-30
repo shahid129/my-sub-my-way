@@ -34,6 +34,17 @@ name = input("Please enter your name: ")
 print(f"\nWelcome to My-Sub My-Way {name}")
 customer_details.append(name)
 
+prices = []
+
+
+def food_price():
+    """
+    Calculates the food of the price depending on footlong
+    or six inch
+    """
+    for price in prices:
+        return price
+
 
 def sandwich_size():
     """
@@ -45,11 +56,13 @@ a) Footlong b) 6 Inch\n")
         if sub == "a":
             customer_details.append("Footlong")
             print("\nGreat choice, you chose Footlong\n")
+            prices.append("€9.00")
             # print("Here are your choices")
             break
         elif sub == "b":
             customer_details.append("6 Inch")
             print("\nGreat choice, you choose a Six Inch")
+            prices.append("€5.00")
             # print("\nHere are your choices")
             break
         else:
@@ -384,5 +397,9 @@ last_row_customer = cusomter_all_value[-1]
 # This can be printed by calling the customer_details list.
 # But i wanted to call it from API
 print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
- {last_row_customer[2]} bread with {last_row_customer[3]}\
- topped with {last_row_customer[4]} cheese")
+ {last_row_customer[2]} bread with {last_row_customer[3]}")
+
+print("\nCalculating price...")
+time.sleep(2)
+
+print(f"\nprice of Sub is {food_price()}")
