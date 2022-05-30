@@ -29,7 +29,7 @@ customer = SHEET.worksheet("customer")
 customer_details = []
 
 name = input("Please enter your name: ")
-print(f"Welcome to MySubMyWay {name}")
+print(f"\nWelcome to My-Sub My-Way {name}")
 customer_details.append(name)
 
 
@@ -38,8 +38,8 @@ def sandwich_size():
     Describes the size of the sandwich
     """
     while True:
-        sub = input("\nWhat would you like to have today:\
-        a) Footlong b) 6 Inch\n")
+        sub = input("\nWhat would you like to have today? \
+a) Footlong b) 6 Inch\n")
         if sub == "a":
             customer_details.append("Footlong")
             print("\nGreat choice, you chose Footlong\n")
@@ -250,7 +250,7 @@ def salad_names():
     A function to fetch all the name of salads from
     Google Sheet and print in the console.
     """
-    print("\nWhich salad would you like in your sandwich?")
+    print("\nSalad selections are - ")
     salad_name = []
     for sld_name in salad_list:
         salad_name.append(sld_name)
@@ -258,14 +258,53 @@ def salad_names():
     for i in range(1, 7):
         num.append(i)
     time.sleep(1)
+    # the variable names at bottim is assigned to the
+    # function salad_names  so that it can be
+    # accessed from other functions
+    salad_names.names = dict(zip(num, salad_name))
+    for num, salad in salad_names.names.items():
+        print(num, salad)
 
-    names = dict(zip(num, salad_name))
-    for n, salad in names.items():
-        print(n, salad)
     return salad_name
 
 
 salad_names()
+
+
+def get_salad_from_user():
+    """
+    Checks for the user input with the default salad list
+    and returns the salad list.
+    """
+    while True:
+        # accept input from user as list of items
+        choose_salad = list(input("\nwhat salad would you like to have? "))
+        print("\nPlease type in the following format 123456,\
+without space between numbers")
+        # Sort out the list from low to high
+        choose_salad.sort()
+        # convert the list of items to integer
+        selected_salad = [int(i) for i in choose_salad]
+
+        # the variable salad is attached to the
+        # function get_salad from user so that it can be
+        # accessed from the while loop at the bottom
+
+        for get_salad_from_user.salads in selected_salad:
+            if get_salad_from_user.salads in salad_names.names:
+                print(f"\nYou selected\
+ {salad_names.names[get_salad_from_user.salads]}")
+            else:
+                print("\nPlease type a number between 1 to 6\
+                to choose your salad.")
+                # salad_names()
+        if get_salad_from_user.salads in salad_names.names:
+            break
+        else:
+            continue
+
+
+get_salad_from_user()
 
 
 # Records all the details in customer_details list(created in line 26)
