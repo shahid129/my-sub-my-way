@@ -21,6 +21,6 @@
       "**/CVS": true
    },
    "files.autoSave": "off",
-   "workbench.colorTheme": "Material Theme Ocean",
+   "workbench.colorTheme": "Visual Studio Dark",
    "editor.defaultFormatter": "HookyQR.beautify"
 }

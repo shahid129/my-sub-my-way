@@ -43,7 +43,7 @@ def food_price():
     or six inch
     """
     for price in prices:
-        return price
+        return int(price)
 
 
 def sandwich_size():
@@ -56,13 +56,13 @@ a) Footlong b) 6 Inch\n")
         if sub == "a":
             customer_details.append("Footlong")
             print("\nGreat choice, you chose Footlong\n")
-            prices.append("€9.00")
+            prices.append(9)
             # print("Here are your choices")
             break
         elif sub == "b":
             customer_details.append("6 Inch")
             print("\nGreat choice, you choose a Six Inch")
-            prices.append("€5.00")
+            prices.append(6)
             # print("\nHere are your choices")
             break
         else:
@@ -384,11 +384,6 @@ without space between numbers")
 get_sauce_from_user()
 
 
-# Records all the details in customer_details list(created in line 26)
-# and this list gets updated in the customer page of google sheet.
-customer.append_row(customer_details)
-
-
 # Obtain the values from the last row of google sheet
 cusomter_all_value = customer.get_all_values()
 last_row_customer = cusomter_all_value[-1]
@@ -402,4 +397,38 @@ print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
 print("\nCalculating price...")
 time.sleep(2)
 
-print(f"\nprice of Sub is {food_price()}")
+print(f"\nPrice of Sub is €{food_price()}")
+
+
+def discount_price():
+    """
+    Calculates 15% off to the price of either footlong
+    or six inch if the customer wish to take the offer
+    """
+    while True:
+        discount = input("\nI can see on my system, that you are eligible of '15%' discount.\
+ Would you like to take that discount? \nType 'y' or 'n: ")
+        if discount == "y":
+            print("\nCalulating discounted price...")
+            time.sleep(2)
+            new_price = round(food_price() * 0.85, 2)
+            print(f"€{new_price}")
+            customer_details.append(new_price)
+            break
+        elif discount == "n":
+            print(f"\nPrice of Sub is €{food_price()}")
+            customer_details.append(food_price())
+            break
+        else:
+            print("\nPlease type 'y" or 'n')
+
+
+discount_price()
+
+
+# Records all the details in customer_details list(created in line 26)
+# and this list gets updated in the customer page of google sheet.
+customer.append_row(customer_details)
+
+
+print(f"\nThank you for visiting My-Sub My-Way {name}. Have a great day!!\n")
