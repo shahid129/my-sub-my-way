@@ -30,9 +30,15 @@ customer = SHEET.worksheet("customer")
 # Rcords all the input by customers in this list
 customer_details = []
 
-name = input("Please enter your name: ")
-print(f"\nWelcome to My-Sub My-Way {name}")
-customer_details.append(name)
+while True:
+    name = input("\nPlease enter your last name: ").capitalize()
+    if not name.isalpha():
+        print(f"{name} is not a valid name. Please enter a valid name")
+        continue
+    else:
+        print(f"\nWelcome to My-Sub My-Way {name}")
+        customer_details.append(name)
+    break
 
 prices = []
 
