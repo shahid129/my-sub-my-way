@@ -440,6 +440,11 @@ to choose your salad.{choose_sauce} is not valid.")
 get_sauce_from_user()
 
 
+# Records all the details in customer_details list(created in line 26)
+# and this list gets updated in the customer page of google sheet.
+customer.append_row(customer_details)
+
+
 # Obtain the values from the last row of google sheet
 cusomter_all_value = customer.get_all_values()
 last_row_customer = cusomter_all_value[-1]
@@ -447,8 +452,12 @@ last_row_customer = cusomter_all_value[-1]
 # Print the values from the last row of google sheet.
 # This can be printed by calling the customer_details list.
 # But i wanted to call it from API
+
+time.sleep(1.5)
+
 print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
  {last_row_customer[2]} bread with {last_row_customer[3]}")
+
 
 print("\nCalculating price...")
 time.sleep(2)
@@ -468,7 +477,7 @@ def discount_price():
             print("\nCalulating discounted price...")
             time.sleep(2)
             new_price = round(food_price() * 0.85, 2)
-            print(f"€{new_price}")
+            print(f"\nDiscounted New Price is €{new_price}")
             customer_details.append(new_price)
             break
         elif discount == "n":
@@ -480,11 +489,6 @@ def discount_price():
 
 
 discount_price()
-
-
-# Records all the details in customer_details list(created in line 26)
-# and this list gets updated in the customer page of google sheet.
-customer.append_row(customer_details)
 
 
 print(f"\nThank you for visiting My-Sub My-Way {name}. Have a great day!!\n")
