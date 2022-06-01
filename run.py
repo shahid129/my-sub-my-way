@@ -164,8 +164,8 @@ def sandwich_names():
         num.append(i)
     time.sleep(1)
 
-    names = dict(zip(num, sandwich_name))
-    for key, value in names.items():
+    sandwich_names.names = dict(zip(num, sandwich_name))
+    for key, value in sandwich_names.names.items():
         print(key, value)
     return sandwich_name
 
@@ -181,34 +181,43 @@ def choose_sandwich():
     """
     print("\nPlease enter a number between 1 to 6 to select your sandwich")
     while True:
-        choose = input("\nPlease choose your sandwich: ")
-        if choose == "1":
-            print(f"\nYou chose {sandwich.col_values(3)[1]}, awesome!!")
-            customer_details.append(sandwich.col_values(3)[1])
-            break
-        elif choose == "2":
-            print(f"\nYou chose {sandwich.col_values(3)[2]}, awesome!!")
-            customer_details.append(sandwich.col_values(3)[2])
-            break
-        elif choose == "3":
-            print(f"\nYou chose {sandwich.col_values(3)[3]}, awesome!!")
-            customer_details.append(sandwich.col_values(3)[3])
-            break
-        elif choose == "4":
-            print(f"\nYou chose {sandwich.col_values(3)[4]}, awesome!!")
-            customer_details.append(sandwich.col_values(3)[4])
-            break
-        elif choose == "5":
-            print(f"\nYou chose {sandwich.col_values(3)[5]}, awesome!!")
-            customer_details.append(sandwich.col_values(3)[5])
-            break
-        elif choose == "6":
-            print(f"\nYou chose {sandwich.col_values(3)[6]}, awesome!!")
-            customer_details.append(sandwich.col_values(3)[6])
-            break
-        else:
-            print("Please type a number between 1 to 6.")
-            continue
+        try:
+            # accept input from user as list of items
+            choose = list(input("\nwhat sandwich would you like to have? "))
+
+            # Sort out the list from low to high
+            # choose.sort()
+
+            # convert the list of items to integer
+            selected_sandwich = [int(i) for i in choose]
+
+            # Restricts user from multiple inputs
+            if len(choose) > 1:
+                print("\nOnly 1 type of sandwich is allowed")
+                continue
+
+            # the variable "choose" is assigned to the
+            # function choose_sandwich so that it can be
+            # accessed from the while loop at the bottom
+            for choose_sandwich.choose in selected_sandwich:
+                if choose_sandwich.choose in sandwich_names.names:
+                    print(f"\nYou selected\
+ {sandwich_names.names[choose_sandwich.choose]}")
+                else:
+                    print(f"\nPlease Check your selection. {choose}\
+ not all are on my list.")
+                    break
+
+            if choose_sandwich.choose in sandwich_names.names:
+                customer_details.\
+                    append(sandwich_names.names[choose_sandwich.choose])
+                break
+            else:
+                continue
+
+        except ValueError:
+            print(f"\nPlease type a number between 1 to 6\
+to choose your bread. {choose} is not valid choice.")
     return choose
 
 
