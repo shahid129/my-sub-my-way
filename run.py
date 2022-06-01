@@ -315,6 +315,9 @@ def get_salad_from_user():
                 print("\nMaximum 6 Salads allowed")
                 continue
 
+            # the variable salad is attached to the
+            # function get_salad from user so that it can be
+            # accessed from the while loop at the bottom
             for get_salad_from_user.salads in selected_salad:
                 if get_salad_from_user.salads in salad_names.names:
                     print(f"\nYou selected\
@@ -370,31 +373,45 @@ def get_sauce_from_user():
     and returns the sauce list.
     """
     while True:
-        print("\nPlease type in the following format 123456,\
-without space between numbers")
-        # accept input from user as list of items
-        choose_sauce = list(input("\nwhat sauce would you like to have? "))
-        # Sort out the list from low to high
-        choose_sauce.sort()
-        # convert the list of items to integer
-        selected_sauce = [int(i) for i in choose_sauce]
+        try:
+            print("\nPlease type in the following format 123456,\
+    without space between numbers")
 
-        # the variable "sauce" is assigned to the
-        # function get_sauce_from_user so that it can be
-        # accessed from the while loop at the bottom
+            # accept input from user as list of items
+            choose_sauce = list(input("\nwhat sauce would you like to have? "))
 
-        for get_sauce_from_user.sauces in selected_sauce:
-            if get_sauce_from_user.sauces in sauce_names.names:
-                print(f"\nYou selected\
+            # Sort out the list from low to high
+            choose_sauce.sort()
+
+            # convert the list of items to integer
+            selected_sauce = [int(i) for i in choose_sauce]
+
+            # Restricts user from unlimited selction of salads
+            if len(choose_sauce) > 3:
+                print("\nMaximum 3 Sauces allowed")
+                continue
+
+            # the variable "sauce" is assigned to the
+            # function get_sauce_from_user so that it can be
+            # accessed from the while loop at the bottom
+
+            for get_sauce_from_user.sauces in selected_sauce:
+                if get_sauce_from_user.sauces in sauce_names.names:
+                    print(f"\nYou selected\
  {sauce_names.names[get_sauce_from_user.sauces]}")
+                else:
+                    print(f"\nPlease Check your selection {choose_sauce}\
+ not all are on my list.")
+                    break
+
+            if get_sauce_from_user.sauces in sauce_names.names:
+                break
             else:
-                print("\nPlease type a number between 1 to 6\
- to choose your salad.")
-                # salad_names()
-        if get_sauce_from_user.sauces in sauce_names.names:
-            break
-        else:
-            continue
+                continue
+
+        except ValueError:
+            print(f"\nPlease type a number between 1 to 6\
+to choose your salad.{choose_sauce} is not valid.")
 
 
 get_sauce_from_user()
