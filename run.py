@@ -298,31 +298,41 @@ def get_salad_from_user():
     and returns the salad list.
     """
     while True:
-        # accept input from user as list of items
-        print("\nPlease type in the following format 123456,\
-without space between numbers")
-        choose_salad = list(input("\nwhat salad would you like to have? "))
-        # Sort out the list from low to high
-        choose_salad.sort()
-        # convert the list of items to integer
-        selected_salad = [int(i) for i in choose_salad]
+        try:
+            # accept input from user as list of items
+            print("\nPlease type in the following format 123456,\
+ without space between numbers")
+            choose_salad = list(input("\nwhat salad would you like to have? "))
 
-        # the variable salad is attached to the
-        # function get_salad from user so that it can be
-        # accessed from the while loop at the bottom
+            # Sort out the list from low to high
+            choose_salad.sort()
 
-        for get_salad_from_user.salads in selected_salad:
-            if get_salad_from_user.salads in salad_names.names:
-                print(f"\nYou selected\
+            # convert the list of items to integer
+            selected_salad = [int(i) for i in choose_salad]
+
+            # Restricts user from unlimited selction of salads
+            if len(choose_salad) > 6:
+                print("\nMaximum 6 Salads allowed")
+                continue
+
+            for get_salad_from_user.salads in selected_salad:
+                if get_salad_from_user.salads in salad_names.names:
+                    print(f"\nYou selected\
  {salad_names.names[get_salad_from_user.salads]}")
+                else:
+                    print(f"\nPlease Check your selection {choose_salad}\
+ not all are on my list.")
+                    # salad_names()
+                    break
+
+            if get_salad_from_user.salads in salad_names.names:
+                break
             else:
-                print("\nPlease type a number between 1 to 6\
-                to choose your salad.")
-                # salad_names()
-        if get_salad_from_user.salads in salad_names.names:
-            break
-        else:
-            continue
+                continue
+
+        except ValueError:
+            print(f"\nPlease type a number between 1 to 6\
+to choose your salad.{choose_salad} is not valid.")
 
 
 get_salad_from_user()
