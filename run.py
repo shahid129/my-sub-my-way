@@ -94,8 +94,8 @@ def bread_names():
     for i in range(1, 5):
         num.append(i)
 
-    names = dict(zip(num, bread_name))
-    for number, bread in names.items():
+    bread_names.names = dict(zip(num, bread_name))
+    for number, bread in bread_names.names.items():
         print(number, bread)
     return bread_name
 
@@ -108,29 +108,43 @@ def choose_bread():
     User can choose a bread using the number from 1 to 4
 
     """
-    print("\nPlease enter a number between 1 to 4")
     while True:
-        brd = input("\nPlease Choose your Bread: ")
-        if brd == "1":
-            print(f"\nYou Chose {sandwich.col_values(2)[1]}, awesome!!")
-            customer_details.append(sandwich.col_values(2)[1])
-            break
-        elif brd == "2":
-            print(f"\nYou Chose {sandwich.col_values(2)[2]}, awesome!!")
-            customer_details.append(sandwich.col_values(2)[2])
-            break
-        elif brd == "3":
-            print(f"\nYou Chose {sandwich.col_values(2)[3]}, awesome!!")
-            customer_details.append(sandwich.col_values(2)[3])
-            break
-        elif brd == "4":
-            print(f"\nYou Chose {sandwich.col_values(2)[4]}, awesome!!")
-            customer_details.append(sandwich.col_values(2)[4])
-            break
-        else:
-            print("\nPlease type a number between 1 to 4.")
-            continue
-    return brd
+        try:
+            # accept input from user as list of items
+            brd = list(input("\nwhat bread would you like to have? "))
+
+            # Sort out the list from low to high
+            brd.sort()
+
+            # convert the list of items to integer
+            selected_bread = [int(i) for i in brd]
+
+            # Restricts user from multiple inputs
+            if len(brd) > 1:
+                print("\nMaximum 1 bread is allowed")
+                continue
+
+            # the variable "brd" is assigned to the
+            # function choose_bread so that it can be
+            # accessed from the while loop at the bottom
+            for choose_bread.brd in selected_bread:
+                if choose_bread.brd in bread_names.names:
+                    print(f"\nYou selected\
+ {bread_names.names[choose_bread.brd]}")
+                else:
+                    print(f"\nPlease Check your selection {brd}\
+ not all are on my list.")
+                    break
+
+            if choose_bread.brd in bread_names.names:
+                customer_details.append(bread_names.names[choose_bread.brd])
+                break
+            else:
+                continue
+
+        except ValueError:
+            print(f"\nPlease type a number between 1 to 4\
+to choose your bread. {brd} is not valid choice.")
 
 
 choose_bread()
