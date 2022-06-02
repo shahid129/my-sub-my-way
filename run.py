@@ -4,6 +4,7 @@ Import gspread so that we can work with google API
 import time
 import gspread
 from google.oauth2.service_account import Credentials
+from prettytable import PrettyTable
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -95,8 +96,13 @@ def bread_names():
         num.append(i)
 
     bread_names.names = dict(zip(num, bread_name))
-    for number, bread in bread_names.names.items():
-        print(number, bread)
+    # for number, bread in bread_names.names.items():
+    #     print(number, bread)
+
+    bread_table = PrettyTable()
+    bread_table.field_names = num
+    bread_table.add_row(bread_name)
+    print(bread_table)
     return bread_name
 
 
@@ -165,8 +171,12 @@ def sandwich_names():
     time.sleep(1)
 
     sandwich_names.names = dict(zip(num, sandwich_name))
-    for key, value in sandwich_names.names.items():
-        print(key, value)
+    # for key, value in sandwich_names.names.items():
+    #     print(key, value)
+    sandwich_table = PrettyTable()
+    sandwich_table.field_names = num
+    sandwich_table.add_row(sandwich_name)
+    print(sandwich_table)
     return sandwich_name
 
 
@@ -306,8 +316,12 @@ def salad_names():
     # function salad_names  so that it can be
     # accessed from other functions
     salad_names.names = dict(zip(num, salad_name))
-    for num, salad in salad_names.names.items():
-        print(num, salad)
+    # for num, salad in salad_names.names.items():
+    #     print(num, salad)
+    salad_table = PrettyTable()
+    salad_table.field_names = num
+    salad_table.add_row(salad_name)
+    print(salad_table)
 
     return salad_name
 
@@ -381,8 +395,12 @@ def sauce_names():
     # function sauce_names  so that it can be
     # accessed from other functions
     sauce_names.names = dict(zip(num, sauce_name))
-    for num, sauce in sauce_names.names.items():
-        print(num, sauce)
+    # for num, sauce in sauce_names.names.items():
+    #     print(num, sauce)
+    sauce_table = PrettyTable()
+    sauce_table.field_names = num
+    sauce_table.add_row(sauce_name)
+    print(sauce_table)
 
     return sauce_name
 
