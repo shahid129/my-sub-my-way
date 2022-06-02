@@ -249,8 +249,13 @@ def cheese_names():
         num.append(i)
 
     cheese_names.names = dict(zip(num, cheese_name))
-    for numb, cheese in cheese_names.names.items():
-        print(numb, cheese)
+    # for numb, cheese in cheese_names.names.items():
+    #     print(numb, cheese)
+
+    cheese_table = PrettyTable()
+    cheese_table.field_names = num
+    cheese_table.add_row(cheese_name)
+    print(cheese_table)
     return cheese_name
 
 
