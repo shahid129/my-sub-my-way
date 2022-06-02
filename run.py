@@ -248,8 +248,8 @@ def cheese_names():
     for i in range(1, 4):
         num.append(i)
 
-    names = dict(zip(num, cheese_name))
-    for numb, cheese in names.items():
+    cheese_names.names = dict(zip(num, cheese_name))
+    for numb, cheese in cheese_names.names.items():
         print(numb, cheese)
     return cheese_name
 
@@ -259,24 +259,41 @@ def select_cheese():
     A function where user can select their cheese
     """
     while True:
-        which_cheese = input("\nWhich cheese would you like to have? ")
-        if which_cheese == "1":
-            print(f"\nYou chose {sandwich.col_values(4)[1]} cheese,\
- great choice!!")
-            customer_details.append(sandwich.col_values(4)[1])
-            break
-        elif which_cheese == "2":
-            print(f"\nYou chose {sandwich.col_values(4)[2]} cheese,\
- great choice!!")
-            customer_details.append(sandwich.col_values(4)[2])
-            break
-        elif which_cheese == "3":
-            print(f"\nYou chose {sandwich.col_values(4)[3]} cheese,\
- great choice!!")
-            customer_details.append(sandwich.col_values(4)[3])
-            break
-        else:
-            print("\nPlease type between 1, 2 or 3")
+        try:
+            # accept input from user as list of items
+            which_cheese =\
+                list(input("\nWhich cheese would you like to have? "))
+
+            # convert the list of items to integer
+            selected_cheese = [int(i) for i in which_cheese]
+
+            # Restricts user from multiple inputs
+            if len(which_cheese) > 1:
+                print("\nOnly one type of cheese is allowed")
+                continue
+
+            # the variable "which" is assigned to the
+            # function choose_cheese so that it can be
+            # accessed from the while loop at the bottom
+            for choose_cheese.which_cheese in selected_cheese:
+                if choose_cheese.which_cheese in cheese_names.names:
+                    print(f"\nYou selected\
+ {cheese_names.names[choose_cheese.which_cheese]}")
+                else:
+                    print(f"\nPlease Check your selection {which_cheese}\
+ not all are on my list.")
+                    break
+
+            if choose_cheese.which_cheese in cheese_names.names:
+                customer_details.\
+                    append(cheese_names.names[choose_cheese.which_cheese])
+                break
+            else:
+                continue
+
+        except ValueError:
+            print(f"\nPlease type a number between 1, 2 or 3 \
+to choose cheese. {which_cheese} is not valid choice.")
 
 
 def choose_cheese():
