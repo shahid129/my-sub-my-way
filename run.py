@@ -53,7 +53,7 @@ def food_price():
     or six inch
     """
     for price in prices:
-        return int(price)
+        return float(round(price, 2))
 
 
 def sandwich_size():
@@ -66,13 +66,13 @@ a) Footlong b) 6 Inch\n")
         if sub == "a":
             customer_details.append("Footlong")
             print("\nGreat choice, you chose Footlong\n")
-            prices.append(9)
+            prices.append(9.50)
             # print("Here are your choices")
             break
         elif sub == "b":
             customer_details.append("6 Inch")
             print("\nGreat choice, you choose a Six Inch")
-            prices.append(6)
+            prices.append(6.50)
             # print("\nHere are your choices")
             break
         else:
@@ -323,6 +323,8 @@ def choose_cheese():
             return cheese_names(), select_cheese()
         elif cheese == "n":
             print("\nThank you")
+            customer_details.\
+                append("No Cheese")
             break
         else:
             print("\nPlease type 'y' or 'n' ")
@@ -493,24 +495,15 @@ to choose your salad.{choose_sauce} is not valid.")
 
 get_sauce_from_user()
 
-
-# Records all the details in customer_details list(created in line 26)
-# and this list gets updated in the customer page of google sheet.
-customer.append_row(customer_details)
-
-
-# Obtain the values from the last row of google sheet
-cusomter_all_value = customer.get_all_values()
-last_row_customer = cusomter_all_value[-1]
-
 # Print the values from the last row of google sheet.
 # This can be printed by calling the customer_details list.
 # But i wanted to call it from API
 
 time.sleep(1.5)
 
-print(f"\n{last_row_customer[0].upper()}, You ordered a {last_row_customer[1]}\
- {last_row_customer[2]} bread with {last_row_customer[3]}")
+# print(f"\n{last_row_customer[0].upper()}, You ordered a
+# {last_row_customer[1]}\
+#  {last_row_customer[2]} bread with {last_row_customer[3]}")
 
 
 print("\nCalculating price...")
@@ -547,8 +540,23 @@ discount_price()
 
 # Date and time generated for reciept function
 today = date.today()
+customer_details.append(str(today))
+
 now = datetime.now()
 dt_string = now.strftime("%H:%M:%S")
+customer_details.append(dt_string)
+
+random_num = random.randint(11, 99)
+customer_details.append(random_num)
+
+# Records all the details in customer_details list(created in line 26)
+# and this list gets updated in the customer page of google sheet.
+customer.append_row(customer_details)
+
+
+# Obtain the values from the last row of google sheet
+cusomter_all_value = customer.get_all_values()
+last_row_customer = cusomter_all_value[-1]
 
 
 def print_reciept():
@@ -562,7 +570,7 @@ def print_reciept():
     receipt_table.field_names = (["My-Sub My-Way"])
 
     # generate random reciipt number
-    receipt_table.add_row([f"\nReciept Number: {random.randint(11,99)}"])
+    receipt_table.add_row([f"\nReciept Number: {random_num}"])
 
     # Add date and time
     receipt_table.add_row([f"\nDate: {today}"])
@@ -572,6 +580,7 @@ def print_reciept():
     receipt_table.add_row([f"\nSize: {last_row_customer[1].upper()}"])
     receipt_table.add_row([f"\nBread name: {last_row_customer[2].upper()}"])
     receipt_table.add_row([f"\nSandwich Name: {last_row_customer[3].upper()}"])
+    receipt_table.add_row([f"\nPrice: €{last_row_customer[5]}"])
     receipt_table.add_row([f"\n\nThank you for visiting My-Sub My-Way {name}.\
  \nHave a great day!!"])
 
