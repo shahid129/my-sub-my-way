@@ -154,6 +154,8 @@ def choose_bread():
         except ValueError:
             print(f"\nPlease type a number between 1 to 4\
 to choose your bread. {brd} is not valid choice.")
+        except AttributeError:
+            print("\nPlease type a number between 1 to 4")
 
 
 choose_bread()
@@ -231,6 +233,9 @@ def choose_sandwich():
         except ValueError:
             print(f"\nPlease type a number between 1 to 6\
 to choose your bread. {choose} is not valid choice.")
+        except AttributeError:
+            print("\nPlease type a number between 1 to 6")
+
     return choose
 
 
@@ -302,6 +307,8 @@ def select_cheese():
         except ValueError:
             print(f"\nPlease type a number between 1, 2 or 3 \
 to choose cheese. {which_cheese} is not valid choice.")
+        except AttributeError:
+            print("\nPlease type a number between  1, 2 or 3")
 
 
 def choose_cheese():
@@ -398,6 +405,8 @@ def get_salad_from_user():
         except ValueError:
             print(f"\nPlease type a number between 1 to 6\
 to choose your salad.{choose_salad} is not valid.")
+        except AttributeError:
+            print("\nPlease type a number between 1 to 6")
 
 
 get_salad_from_user()
@@ -478,6 +487,8 @@ def get_sauce_from_user():
         except ValueError:
             print(f"\nPlease type a number between 1 to 6\
 to choose your salad.{choose_sauce} is not valid.")
+        except AttributeError:
+            print("\nPlease type a number between 1 to 6")
 
 
 get_sauce_from_user()
@@ -556,7 +567,7 @@ def print_reciept():
     # Add date and time
     receipt_table.add_row([f"\nDate: {today}"])
     receipt_table.add_row([f"\nTime: {dt_string}"])
-    receipt_table.add_row(["\n-------ORDER DETAILS --------"])
+    receipt_table.add_row(["\n------- ORDER DETAILS --------"])
     receipt_table.add_row([f"\nName: {last_row_customer[0].upper()}"])
     receipt_table.add_row([f"\nSize: {last_row_customer[1].upper()}"])
     receipt_table.add_row([f"\nBread name: {last_row_customer[2].upper()}"])
