@@ -2,9 +2,12 @@
 Import gspread so that we can work with google API
 """
 import time
+import random
+from datetime import date, datetime
 import gspread
 from google.oauth2.service_account import Credentials
 from prettytable import PrettyTable
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -531,4 +534,37 @@ def discount_price():
 discount_price()
 
 
-print(f"\nThank you for visiting My-Sub My-Way {name}. Have a great day!!\n")
+# Date and time generated for reciept function
+today = date.today()
+now = datetime.now()
+dt_string = now.strftime("%H:%M:%S")
+
+
+def print_reciept():
+    """
+    Print the receipt from the user data that is saved
+    in google sheet.
+    """
+    receipt_table = PrettyTable()
+    print("\nPrinting Receipt\n")
+    time.sleep(2)
+    receipt_table.field_names = (["My-Sub My-Way"])
+
+    # generate random reciipt number
+    receipt_table.add_row([f"\nReciept Number: {random.randint(11,99)}"])
+
+    # Add date and time
+    receipt_table.add_row([f"\nDate: {today}"])
+    receipt_table.add_row([f"\nTime: {dt_string}"])
+    receipt_table.add_row(["\n-------ORDER DETAILS --------"])
+    receipt_table.add_row([f"\nName: {last_row_customer[0].upper()}"])
+    receipt_table.add_row([f"\nSize: {last_row_customer[1].upper()}"])
+    receipt_table.add_row([f"\nBread name: {last_row_customer[2].upper()}"])
+    receipt_table.add_row([f"\nSandwich Name: {last_row_customer[3].upper()}"])
+    receipt_table.add_row([f"\n\nThank you for visiting My-Sub My-Way {name}.\
+ \nHave a great day!!"])
+
+    print(receipt_table)
+
+
+print_reciept()
