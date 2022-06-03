@@ -7,7 +7,7 @@ from datetime import date, datetime
 import gspread
 from google.oauth2.service_account import Credentials
 from prettytable import PrettyTable
-
+from art import *
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -30,6 +30,8 @@ sauce_list = sandwich.col_values(6)[1:]  # List of Sauces in spreadsheet
 
 customer = SHEET.worksheet("customer")
 # print(customer.get_all_values())
+
+tprint("\n\nMy-Sub    My-Way\n\n")
 
 # Rcords all the input by customers in this list
 customer_details = []
