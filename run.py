@@ -7,7 +7,9 @@ from datetime import date, datetime
 import gspread
 from google.oauth2.service_account import Credentials
 from prettytable import PrettyTable
-from art import *
+from art import tprint
+
+from colorama import Fore, Style
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -39,7 +41,8 @@ customer_details = []
 while True:
     name = input("\nPlease enter your last name: ").capitalize()
     if not name.isalpha():
-        print(f"{name} is not a valid name. Please enter a valid name")
+        print(Fore.RED + f"{name} is not a valid name. Please enter \
+a valid name" + Style.RESET_ALL)
         continue
     else:
         print(f"\nWelcome to My-Sub My-Way {name}")
@@ -78,7 +81,7 @@ a) Footlong b) 6 Inch\n")
             # print("\nHere are your choices")
             break
         else:
-            print("Please type a or b")
+            print(Fore.RED + "Please type a or b" + Style.RESET_ALL)
             continue
     return sub
 
@@ -154,10 +157,11 @@ def choose_bread():
                 continue
 
         except ValueError:
-            print(f"\nPlease type a number between 1 to 4\
-to choose your bread. {brd} is not valid choice.")
+            print(Fore.RED + f"\nPlease type a number between 1 to 4\
+to choose your bread. {brd} is not valid choice." + Style.RESET_ALL)
         except AttributeError:
-            print("\nPlease type a number between 1 to 4")
+            print(Fore.RED + "\nPlease type a number between \
+                1 to 4" + Style.RESET_ALL)
 
 
 choose_bread()
@@ -233,10 +237,11 @@ def choose_sandwich():
                 continue
 
         except ValueError:
-            print(f"\nPlease type a number between 1 to 6\
-to choose your bread. {choose} is not valid choice.")
+            print(Fore.RED + f"\nPlease type a number between 1 to 6\
+to choose your bread. {choose} is not valid choice." + Style.RESET_ALL)
         except AttributeError:
-            print("\nPlease type a number between 1 to 6")
+            print(Fore.RED + "\nPlease type a number \
+between 1 to 6" + Style.RESET_ALL)
 
     return choose
 
@@ -307,10 +312,11 @@ def select_cheese():
                 continue
 
         except ValueError:
-            print(f"\nPlease type a number between 1, 2 or 3 \
-to choose cheese. {which_cheese} is not valid choice.")
+            print(Fore.RED + f"\nPlease type a number between 1, 2 or 3 \
+to choose cheese. {which_cheese} is not valid choice." + Style.RESET_ALL)
         except AttributeError:
-            print("\nPlease type a number between  1, 2 or 3")
+            print(Fore.RED + "\nPlease type a number between\
+1, 2 or 3" + Style.RESET_ALL)
 
 
 def choose_cheese():
@@ -407,10 +413,11 @@ def get_salad_from_user():
                 continue
 
         except ValueError:
-            print(f"\nPlease type a number between 1 to 6\
-to choose your salad.{choose_salad} is not valid.")
+            print(Fore.RED + f"\nPlease type a number between 1 to 6 \
+to choose your salad.{choose_salad} is not valid." + Style.RESET_ALL)
         except AttributeError:
-            print("\nPlease type a number between 1 to 6")
+            print(Fore.RED + "\nPlease type a number \
+between 1 to 6" + Style.RESET_ALL)
 
 
 get_salad_from_user()
@@ -453,7 +460,7 @@ def get_sauce_from_user():
     """
     while True:
         try:
-            print("\nPlease type in the following format 123456,\
+            print("\nPlease type in the following format 123456, \
     without space between numbers")
 
             # accept input from user as list of items
@@ -489,10 +496,11 @@ def get_sauce_from_user():
                 continue
 
         except ValueError:
-            print(f"\nPlease type a number between 1 to 6\
-to choose your salad.{choose_sauce} is not valid.")
+            print(Fore.RED + f"\nPlease type a number between 1 to 6 \
+to choose your salad.{choose_sauce} is not valid." + Style.RESET_ALL)
         except AttributeError:
-            print("\nPlease type a number between 1 to 6")
+            print(Fore.RED + "\nPlease type a number between \
+1 to 6" + Style.RESET_ALL)
 
 
 get_sauce_from_user()
