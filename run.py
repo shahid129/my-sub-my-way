@@ -31,8 +31,8 @@ sauce_list = sandwich.col_values(6)[1:]  # List of Sauces in spreadsheet
 
 
 customer = SHEET.worksheet("customer")
-# print(customer.get_all_values())
 
+# Prints logo 
 tprint("\n\nMy-Sub    My-Way\n\n")
 
 
