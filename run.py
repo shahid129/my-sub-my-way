@@ -35,19 +35,76 @@ customer = SHEET.worksheet("customer")
 
 tprint("\n\nMy-Sub    My-Way\n\n")
 
+
+def last_receipt():
+    """
+    A Fuuntion that seraches for customer details by their name in
+    the customer spread sheet and fetches all the details
+    about their last order.
+    """
+    table = PrettyTable()
+
+    # finds the user name in the list. if there is multiple of
+    # same name it fetches the last one from the list
+    cell = customer.findall(name)[-1]
+    values_list = customer.row_values(cell.row)
+
+    while True:
+        if name in values_list:
+            latest_recipt = input("\n" + name + ", We found your details, \
+would you like to view your last recept? Type 'y' or 'n': ")
+            if latest_recipt == "y":
+                print("\nFetching your latest receipt...\n")
+                time.sleep(2)
+                table.field_names = (["My-Sub My-Way"])
+                # getting all these details from spreadsheet.
+                table.add_row([f"\nReciept Number: {values_list[8]}"])
+                table.add_row([f"\nDate: {values_list[6]}"])
+                table.add_row([f"\nTime: {values_list[7]}"])
+                table.add_row(["\n------- ORDER DETAILS --------"])
+                table.add_row([f"\nName: {values_list[0]}"])
+                table.add_row([f"\nSize: {values_list[1].upper()}"])
+                table.add_row([f"\nBread name: {values_list[2].upper()}"])
+                table.add_row([f"\nSandwich Name: {values_list[3].upper()}"])
+                table.add_row([f"\nPrice: €{values_list[5]}"])
+                table.add_row([f"\n\nThank you for visiting My-Sub My-Way {values_list[0]}.\
+        \nHave a great day!!"])
+                print(table)
+                time.sleep(1.5)
+                print("\nWell, lets' take your order.")
+                break
+            elif latest_recipt == "n":
+                time.sleep(1.5)
+                print("\nPerfact, lets take your order")
+                break
+            else:
+                print("\nPlease type 'y' or 'n'")
+                continue
+        else:
+            break
+
+# last_receipt()
+
+
 # Rcords all the input by customers in this list
 customer_details = []
 
 while True:
-    name = input("\nPlease enter your last name: ").capitalize()
-    if not name.isalpha():
-        print(Fore.RED + f"{name} is not a valid name. Please enter \
+    try:
+        name = input("\nPlease enter your last name: ").capitalize()
+        if not name.isalpha():
+            print(Fore.RED + f"{name} is not a valid name. Please enter \
 a valid name" + Style.RESET_ALL)
-        continue
-    else:
+            continue
+        else:
+            # print(f"\nWelcome to My-Sub My-Way {name}")
+            last_receipt()
+            # customer_details.append(name)
+            break
+    except IndexError:
         print(f"\nWelcome to My-Sub My-Way {name}")
         customer_details.append(name)
-    break
+        break
 
 prices = []
 
