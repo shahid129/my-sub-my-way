@@ -1,6 +1,10 @@
 """
 Import gspread so that we can work with google API
 """
+# import to exit or restart the program
+import os
+import sys
+
 import time
 import random
 from datetime import date, datetime
@@ -32,7 +36,7 @@ sauce_list = sandwich.col_values(6)[1:]  # List of Sauces in spreadsheet
 
 customer = SHEET.worksheet("customer")
 
-# Prints logo 
+# Prints logo
 tprint("\n\nMy-Sub    My-Way\n\n")
 
 
@@ -97,13 +101,14 @@ while True:
 a valid name" + Style.RESET_ALL)
             continue
         else:
+            customer_details.append(name)
             # print(f"\nWelcome to My-Sub My-Way {name}")
             last_receipt()
             # customer_details.append(name)
             break
     except IndexError:
         print(f"\nWelcome to My-Sub My-Way {name}")
-        customer_details.append(name)
+        # customer_details.append(name)
         break
 
 prices = []
@@ -655,3 +660,27 @@ def print_reciept():
 
 
 print_reciept()
+
+
+# this block of code is taken from stackoverflow
+# Restart the whole program if the user selects y
+
+def restart():
+    """
+    Restart the whole program if the user selects y
+    or ends the code if anthing else is pressed
+    """
+    while True:
+        order_again = input("\nWould you like to order another \
+sandwich? 'y' or 'n': ")
+
+        if order_again == "y":
+            os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
+        elif order_again == "n":
+            print(f"\n\nThank you {name}, have a lovely day! Bye...\n\n")
+            sys.exit(0)
+        else:
+            print("\nPlease type 'y' or 'n' ")
+
+
+restart()
