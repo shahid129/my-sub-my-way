@@ -56,7 +56,8 @@ def last_receipt():
     while True:
         if name in values_list:
             latest_recipt = input(Fore.GREEN + "\n" + name + ", We found your details, \
-would you like to view your last recept? Type 'y' or 'n': " + Style.RESET_ALL)
+would you like to view your last recept? \
+Type 'y' or 'n': " + Style.RESET_ALL).lower()
             if latest_recipt == "y":
                 print("\nFetching your latest receipt...\n")
                 time.sleep(2)
@@ -385,7 +386,7 @@ def choose_cheese():
     """
     while True:
         cheese = input(Fore.GREEN + "\nWould you like \
-to have cheese? y/n " + Style.RESET_ALL)
+to have cheese? y/n " + Style.RESET_ALL).lower()
         if cheese == "y":
 
             # Returns theese two function if users wants cheese
@@ -585,7 +586,8 @@ def discount_price():
     while True:
         discount = input(Fore.GREEN + "\nI can see on my system, \
 that you are eligible of '15%' discount. \
-Would you like to take that discount? \nType 'y' or 'n: " + Style.RESET_ALL)
+Would you like to take that discount? \
+\nType 'y' or 'n: " + Style.RESET_ALL).lower()
         if discount == "y":
             print("\nCalulating discounted price...")
             time.sleep(2)
@@ -671,7 +673,7 @@ def restart():
     """
     while True:
         order_again = input(Fore.GREEN + "\nWould you like to order another \
-sandwich? 'y' or 'n': " + Style.RESET_ALL)
+sandwich? 'y' or 'n': " + Style.RESET_ALL).lower()
 
         if order_again == "y":
             os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
