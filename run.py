@@ -55,8 +55,8 @@ def last_receipt():
 
     while True:
         if name in values_list:
-            latest_recipt = input("\n" + name + ", We found your details, \
-would you like to view your last recept? Type 'y' or 'n': ")
+            latest_recipt = input(Fore.GREEN + "\n" + name + ", We found your details, \
+would you like to view your last recept? Type 'y' or 'n': " + Style.RESET_ALL)
             if latest_recipt == "y":
                 print("\nFetching your latest receipt...\n")
                 time.sleep(2)
@@ -95,7 +95,8 @@ customer_details = []
 
 while True:
     try:
-        name = input("\nPlease enter your last name: ").capitalize()
+        name = input(Fore.GREEN + "\nPlease enter your \
+last name: " + Style.RESET_ALL).capitalize()
         if not name.isalpha():
             print(Fore.RED + f"{name} is not a valid name. Please enter \
 a valid name" + Style.RESET_ALL)
@@ -128,8 +129,8 @@ def sandwich_size():
     Describes the size of the sandwich
     """
     while True:
-        sub = input("\nWhat would you like to have today? \
-a) Footlong b) 6 Inch\n")
+        sub = input(Fore.GREEN + "\nWhat would you like to have today? \
+a) Footlong b) 6 Inch\n" + Style.RESET_ALL)
         if sub == "a":
             customer_details.append("Footlong")
             print("\nGreat choice, you chose Footlong\n")
@@ -187,7 +188,8 @@ def choose_bread():
     while True:
         try:
             # accept input from user as list of items
-            brd = list(input("\nwhat bread would you like to have? "))
+            brd = list(input(Fore.GREEN + "\nWhat bread would \
+you like to have? " + Style.RESET_ALL))
 
             # Sort out the list from low to high
             brd.sort()
@@ -266,7 +268,8 @@ def choose_sandwich():
     while True:
         try:
             # accept input from user as list of items
-            choose = list(input("\nwhat sandwich would you like to have? "))
+            choose = list(input(Fore.GREEN + "\nWhat sandwich \
+would you like to have? " + Style.RESET_ALL))
 
             # Sort out the list from low to high
             # choose.sort()
@@ -344,7 +347,8 @@ def select_cheese():
         try:
             # accept input from user as list of items
             which_cheese =\
-                list(input("\nWhich cheese would you like to have? "))
+                list(input(Fore.GREEN + "\nWhich cheese would \
+you like to have? " + Style.RESET_ALL))
 
             # convert the list of items to integer
             selected_cheese = [int(i) for i in which_cheese]
@@ -387,7 +391,8 @@ def choose_cheese():
     if the user choses y
     """
     while True:
-        cheese = input("\nWould you like to have cheese? y/n ")
+        cheese = input(Fore.GREEN + "\nWould you like \
+to have cheese? y/n " + Style.RESET_ALL)
         if cheese == "y":
             # Returns theese two function if users wants cheese
             return cheese_names(), select_cheese()
@@ -443,7 +448,8 @@ def get_salad_from_user():
             # accept input from user as list of items
             print("\nPlease type in the following format 123456,\
  without space between numbers")
-            choose_salad = list(input("\nwhat salad would you like to have? "))
+            choose_salad = list(input(Fore.GREEN + "\nWhat salad would \
+you like to have? " + Style.RESET_ALL))
 
             # Sort out the list from low to high
             choose_salad.sort()
@@ -523,10 +529,11 @@ def get_sauce_from_user():
     while True:
         try:
             print("\nPlease type in the following format 123456, \
-    without space between numbers")
+without space between numbers")
 
             # accept input from user as list of items
-            choose_sauce = list(input("\nwhat sauce would you like to have? "))
+            choose_sauce = list(input(Fore.GREEN + "\nwhat sauce \
+would you like to have? " + Style.RESET_ALL))
 
             # Sort out the list from low to high
             choose_sauce.sort()
@@ -590,8 +597,9 @@ def discount_price():
     or six inch if the customer wish to take the offer
     """
     while True:
-        discount = input("\nI can see on my system, that you are eligible of '15%' discount.\
- Would you like to take that discount? \nType 'y' or 'n: ")
+        discount = input(Fore.GREEN + "\nI can see on my system, \
+that you are eligible of '15%' discount. \
+Would you like to take that discount? \nType 'y' or 'n: " + Style.RESET_ALL)
         if discount == "y":
             print("\nCalulating discounted price...")
             time.sleep(2)
@@ -671,8 +679,8 @@ def restart():
     or ends the code if anthing else is pressed
     """
     while True:
-        order_again = input("\nWould you like to order another \
-sandwich? 'y' or 'n': ")
+        order_again = input(Fore.GREEN + "\nWould you like to order another \
+sandwich? 'y' or 'n': " + Style.RESET_ALL)
 
         if order_again == "y":
             os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
