@@ -37,7 +37,7 @@ sauce_list = sandwich.col_values(6)[1:]  # List of Sauces in spreadsheet
 customer = SHEET.worksheet("customer")
 
 # Prints logo
-tprint("\n\nMy-Sub    My-Way\n\n")
+tprint("\n\nMy-Sub My-Way\n\n", font="cybermedum")
 
 
 def last_receipt():
@@ -102,18 +102,15 @@ last name: " + Style.RESET_ALL).capitalize()
 a valid name" + Style.RESET_ALL)
             continue
         elif len(name) <= 2 or len(name) > 9:
-            print(Fore.RED + f" Your name '{name}' should be more than 2 character or \
+            print(Fore.RED + f"Your name '{name}' should be more than 2 character or \
 less than 9 character. Try again." + Style.RESET_ALL)
             continue
         else:
             customer_details.append(name)
-            # print(f"\nWelcome to My-Sub My-Way {name}")
             last_receipt()
-            # customer_details.append(name)
             break
     except IndexError:
         print(f"\nWelcome to My-Sub My-Way {name}")
-        # customer_details.append(name)
         break
 
 prices = []
@@ -134,18 +131,16 @@ def sandwich_size():
     """
     while True:
         sub = input(Fore.GREEN + "\nWhat would you like to have today? \
-a) Footlong b) 6 Inch\n" + Style.RESET_ALL)
+a) Footlong b) 6 Inch\n" + Style.RESET_ALL).lower()
         if sub == "a":
             customer_details.append("Footlong")
             print("\nGreat choice, you chose Footlong\n")
             prices.append(9.50)
-            # print("Here are your choices")
             break
         elif sub == "b":
             customer_details.append("6 Inch")
             print("\nGreat choice, you choose a Six Inch")
             prices.append(6.50)
-            # print("\nHere are your choices")
             break
         else:
             print(Fore.RED + "Please type a or b" + Style.RESET_ALL)
@@ -170,9 +165,8 @@ def bread_names():
     for i in range(1, 5):
         num.append(i)
 
+    # convert bread name and num to dict
     bread_names.names = dict(zip(num, bread_name))
-    # for number, bread in bread_names.names.items():
-    #     print(number, bread)
 
     bread_table = PrettyTable()
     bread_table.field_names = num
@@ -187,7 +181,6 @@ bread_names()
 def choose_bread():
     """
     User can choose a bread using the number from 1 to 4
-
     """
     while True:
         try:
@@ -249,9 +242,9 @@ def sandwich_names():
         num.append(i)
     time.sleep(1)
 
+    # convert sandwich name and num to dict
     sandwich_names.names = dict(zip(num, sandwich_name))
-    # for key, value in sandwich_names.names.items():
-    #     print(key, value)
+
     sandwich_table = PrettyTable()
     sandwich_table.field_names = num
     sandwich_table.add_row(sandwich_name)
@@ -274,9 +267,6 @@ def choose_sandwich():
             # accept input from user as list of items
             choose = list(input(Fore.GREEN + "\nWhat sandwich \
 would you like to have? " + Style.RESET_ALL))
-
-            # Sort out the list from low to high
-            # choose.sort()
 
             # convert the list of items to integer
             selected_sandwich = [int(i) for i in choose]
@@ -332,9 +322,8 @@ def cheese_names():
     for i in range(1, 4):
         num.append(i)
 
+    # Convert num and cheese name to dict
     cheese_names.names = dict(zip(num, cheese_name))
-    # for numb, cheese in cheese_names.names.items():
-    #     print(numb, cheese)
 
     cheese_table = PrettyTable()
     cheese_table.field_names = num
@@ -362,7 +351,7 @@ you like to have? " + Style.RESET_ALL))
                 print("\nOnly one type of cheese is allowed")
                 continue
 
-            # the variable "which" is assigned to the
+            # the variable "which_cheeae" is assigned to the
             # function choose_cheese so that it can be
             # accessed from the while loop at the bottom
             for choose_cheese.which_cheese in selected_cheese:
@@ -398,6 +387,7 @@ def choose_cheese():
         cheese = input(Fore.GREEN + "\nWould you like \
 to have cheese? y/n " + Style.RESET_ALL)
         if cheese == "y":
+
             # Returns theese two function if users wants cheese
             return cheese_names(), select_cheese()
         elif cheese == "n":
@@ -428,9 +418,10 @@ def salad_names():
     # the variable names at bottim is assigned to the
     # function salad_names  so that it can be
     # accessed from other functions
+
+    # Convert num and salad name to dict
     salad_names.names = dict(zip(num, salad_name))
-    # for num, salad in salad_names.names.items():
-    #     print(num, salad)
+
     salad_table = PrettyTable()
     salad_table.field_names = num
     salad_table.add_row(salad_name)
@@ -511,9 +502,9 @@ def sauce_names():
     # the variable "names" at bottom is assigned to the
     # function sauce_names  so that it can be
     # accessed from other functions
+
+    # Convert num and sauce name to dict
     sauce_names.names = dict(zip(num, sauce_name))
-    # for num, sauce in sauce_names.names.items():
-    #     print(num, sauce)
     sauce_table = PrettyTable()
     sauce_table.field_names = num
     sauce_table.add_row(sauce_name)
@@ -578,16 +569,7 @@ to choose your salad.{choose_sauce} is not valid." + Style.RESET_ALL)
 
 get_sauce_from_user()
 
-# Print the values from the last row of google sheet.
-# This can be printed by calling the customer_details list.
-# But i wanted to call it from API
-
 time.sleep(1.5)
-
-# print(f"\n{last_row_customer[0].upper()}, You ordered a
-# {last_row_customer[1]}\
-#  {last_row_customer[2]} bread with {last_row_customer[3]}")
-
 
 print("\nCalculating price...")
 time.sleep(2)
@@ -660,6 +642,11 @@ def print_reciept():
     receipt_table.add_row([f"\nDate: {today}"])
     receipt_table.add_row([f"\nTime: {dt_string}"])
     receipt_table.add_row(["\n------- ORDER DETAILS --------"])
+
+    # Print the values from the last row of google sheet.
+    # This can be printed by calling the customer_details list
+    # (created in line 26).
+    # But i wanted to call it from API
     receipt_table.add_row([f"\nName: {last_row_customer[0].upper()}"])
     receipt_table.add_row([f"\nSize: {last_row_customer[1].upper()}"])
     receipt_table.add_row([f"\nBread name: {last_row_customer[2].upper()}"])
