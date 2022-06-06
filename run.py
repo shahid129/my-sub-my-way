@@ -101,6 +101,10 @@ last name: " + Style.RESET_ALL).capitalize()
             print(Fore.RED + f"{name} is not a valid name. Please enter \
 a valid name" + Style.RESET_ALL)
             continue
+        elif len(name) <= 2 or len(name) > 9:
+            print(Fore.RED + f" Your name '{name}' should be more than 2 character or \
+less than 9 character. Try again." + Style.RESET_ALL)
+            continue
         else:
             customer_details.append(name)
             # print(f"\nWelcome to My-Sub My-Way {name}")
