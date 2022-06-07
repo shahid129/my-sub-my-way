@@ -19,7 +19,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -42,7 +42,7 @@ tprint("\n\nMy-Sub My-Way\n\n", font="cybermedum")
 
 def last_receipt():
     """
-    A Fuuntion that seraches for customer details by their name in
+    A Function that seraches for customer details by their name in
     the customer spread sheet and fetches all the details
     about their last order.
     """
@@ -88,10 +88,8 @@ Type 'y' or 'n': " + Style.RESET_ALL).lower()
         else:
             break
 
-# last_receipt()
 
-
-# Rcords all the input by customers in this list
+# Records all the input by customers in this list
 customer_details = []
 
 while True:
@@ -102,7 +100,7 @@ last name: " + Style.RESET_ALL).capitalize()
             print(Fore.RED + f"{name} is not a valid name. Please enter \
 a valid name" + Style.RESET_ALL)
             continue
-        elif len(name) <= 2 or len(name) > 9:
+        elif len(name) <= 2 or len(name) > 25:
             print(Fore.RED + f"Your name '{name}' should be more than 2 character or \
 less than 9 character. Try again." + Style.RESET_ALL)
             continue
