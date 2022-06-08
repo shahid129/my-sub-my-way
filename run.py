@@ -36,8 +36,49 @@ sauce_list = sandwich.col_values(6)[1:]  # List of Sauces in spreadsheet
 
 customer = SHEET.worksheet("customer")
 
+# Records all the input by customers in this list
+customer_details = []
+
+prices = []
+
+# Date and time generated for receipt function
+today = date.today()
+now = datetime.now()
+dt_string = now.strftime("%H:%M:%S")
+
+random_num = random.randint(11, 99)
+
 # Prints logo
 tprint("\n\nMy-Sub My-Way\n\n", font="cybermedum")
+
+
+def user_name():
+    """
+    User inputs their name, and function checks if
+    the uesr name is valid, without space, no numbers.
+    It also checks if the name is less than 2 or more than 25 character
+    """
+    while True:
+        try:
+            user_name.name = input(Fore.GREEN + "\nPlease enter your \
+last name: " + Style.RESET_ALL).capitalize()
+            if not user_name.name.isalpha():
+                print(Fore.RED + f"{user_name.name } is not a valid name. Please enter \
+a valid name" + Style.RESET_ALL)
+                continue
+            elif len(user_name.name) <= 2 or len(user_name.name) > 25:
+                print(Fore.RED + f"Your name '{user_name.name}' should be more than 2 character or \
+less than 9 character. Try again." + Style.RESET_ALL)
+                continue
+            else:
+                customer_details.append(user_name.name)
+                last_receipt()
+                break
+        except IndexError:
+            print(f"\nWelcome to My-Sub My-Way {user_name.name}")
+        break
+    return user_name.name
+# user_name()
 
 
 def last_receipt():
@@ -50,12 +91,12 @@ def last_receipt():
 
     # finds the user name in the list. if there is multiple of
     # same name it fetches the last one from the list
-    cell = customer.findall(name)[-1]
+    cell = customer.findall(user_name.name)[-1]
     values_list = customer.row_values(cell.row)
 
     while True:
-        if name in values_list:
-            latest_recipt = input(Fore.GREEN + "\n" + name + ", We found your details, \
+        if user_name.name in values_list:
+            latest_recipt = input(Fore.GREEN + "\n" + user_name.name + ", We found your details, \
 would you like to view your last recept? \
 Type 'y' or 'n': " + Style.RESET_ALL).lower()
             if latest_recipt == "y":
@@ -63,7 +104,7 @@ Type 'y' or 'n': " + Style.RESET_ALL).lower()
                 time.sleep(2)
                 table.field_names = (["My-Sub My-Way"])
                 # getting all these details from spreadsheet.
-                table.add_row([f"\nReciept Number: {values_list[8]}"])
+                table.add_row([f"\nreceipt Number: {values_list[8]}"])
                 table.add_row([f"\nDate: {values_list[6]}"])
                 table.add_row([f"\nTime: {values_list[7]}"])
                 table.add_row(["\n------- ORDER DETAILS --------"])
@@ -87,32 +128,6 @@ Type 'y' or 'n': " + Style.RESET_ALL).lower()
                 continue
         else:
             break
-
-
-# Records all the input by customers in this list
-customer_details = []
-
-while True:
-    try:
-        name = input(Fore.GREEN + "\nPlease enter your \
-last name: " + Style.RESET_ALL).capitalize()
-        if not name.isalpha():
-            print(Fore.RED + f"{name} is not a valid name. Please enter \
-a valid name" + Style.RESET_ALL)
-            continue
-        elif len(name) <= 2 or len(name) > 25:
-            print(Fore.RED + f"Your name '{name}' should be more than 2 character or \
-less than 9 character. Try again." + Style.RESET_ALL)
-            continue
-        else:
-            customer_details.append(name)
-            last_receipt()
-            break
-    except IndexError:
-        print(f"\nWelcome to My-Sub My-Way {name}")
-        break
-
-prices = []
 
 
 def food_price():
@@ -147,7 +162,7 @@ a) Footlong b) 6 Inch\n" + Style.RESET_ALL).lower()
     return sub
 
 
-sandwich_size()
+# sandwich_size()
 
 
 def bread_names():
@@ -174,7 +189,7 @@ def bread_names():
     return bread_name
 
 
-bread_names()
+# bread_names()
 
 
 def choose_bread():
@@ -224,7 +239,7 @@ to choose your bread. {brd} is not valid choice." + Style.RESET_ALL)
                 1 to 4" + Style.RESET_ALL)
 
 
-choose_bread()
+# choose_bread()
 
 
 def sandwich_names():
@@ -251,7 +266,7 @@ def sandwich_names():
     return sandwich_name
 
 
-sandwich_names()
+# sandwich_names()
 
 
 def choose_sandwich():
@@ -304,7 +319,7 @@ between 1 to 6" + Style.RESET_ALL)
     return choose
 
 
-choose_sandwich()
+# choose_sandwich()
 
 
 def cheese_names():
@@ -398,7 +413,7 @@ to have cheese? y/n " + Style.RESET_ALL).lower()
             print("\nPlease type 'y' or 'n' ")
 
 
-choose_cheese()
+# choose_cheese()
 
 
 def salad_names():
@@ -429,7 +444,7 @@ def salad_names():
     return salad_name
 
 
-salad_names()
+# salad_names()
 
 
 def get_salad_from_user():
@@ -482,7 +497,7 @@ to choose your salad.{choose_salad} is not valid." + Style.RESET_ALL)
 between 1 to 6" + Style.RESET_ALL)
 
 
-get_salad_from_user()
+# get_salad_from_user()
 
 
 def sauce_names():
@@ -512,7 +527,7 @@ def sauce_names():
     return sauce_name
 
 
-sauce_names()
+# sauce_names()
 
 
 def get_sauce_from_user():
@@ -566,14 +581,7 @@ to choose your salad.{choose_sauce} is not valid." + Style.RESET_ALL)
 1 to 6" + Style.RESET_ALL)
 
 
-get_sauce_from_user()
-
-time.sleep(1.5)
-
-print("\nCalculating price...")
-time.sleep(2)
-
-print(f"\nPrice of Sub is €{food_price()}")
+# get_sauce_from_user()
 
 
 def discount_price():
@@ -581,6 +589,12 @@ def discount_price():
     Calculates 15% off to the price of either footlong
     or six inch if the customer wish to take the offer
     """
+    time.sleep(1.5)
+
+    print("\nCalculating price...")
+    time.sleep(2)
+
+    print(f"\nPrice of Sub is €{food_price()}")
     while True:
         discount = input(Fore.GREEN + "\nI can see on my system, \
 that you are eligible of '15%' discount. \
@@ -601,42 +615,25 @@ Would you like to take that discount? \
             print("\nPlease type 'y" or 'n')
 
 
-discount_price()
+# discount_price()
 
 
-# Date and time generated for reciept function
-today = date.today()
-customer_details.append(str(today))
-
-now = datetime.now()
-dt_string = now.strftime("%H:%M:%S")
-customer_details.append(dt_string)
-
-random_num = random.randint(11, 99)
-customer_details.append(random_num)
-
-# Records all the details in customer_details list(created in line 26)
-# and this list gets updated in the customer page of google sheet.
-customer.append_row(customer_details)
-
-
-# Obtain the values from the last row of google sheet
-cusomter_all_value = customer.get_all_values()
-last_row_customer = cusomter_all_value[-1]
-
-
-def print_reciept():
+def print_receipt():
     """
     Print the receipt from the user data that is saved
     in google sheet.
     """
+    # Obtain the values from the last row of google sheet
+    cusomter_all_value = customer.get_all_values()
+    last_row_customer = cusomter_all_value[-1]
+
     receipt_table = PrettyTable()
     print("\nPrinting Receipt\n")
     time.sleep(2)
     receipt_table.field_names = (["My-Sub My-Way"])
 
-    # generate random reciipt number
-    receipt_table.add_row([f"\nReciept Number: {random_num}"])
+    # generate random receipt number
+    receipt_table.add_row([f"\nReceipt Number: {random_num}"])
 
     # Add date and time
     receipt_table.add_row([f"\nDate: {today}"])
@@ -652,13 +649,13 @@ def print_reciept():
     receipt_table.add_row([f"\nBread name: {last_row_customer[2].upper()}"])
     receipt_table.add_row([f"\nSandwich Name: {last_row_customer[3].upper()}"])
     receipt_table.add_row([f"\nPrice: €{last_row_customer[5]}"])
-    receipt_table.add_row([f"\n\nThank you for visiting My-Sub My-Way {name}.\
+    receipt_table.add_row([f"\n\nThank you for visiting My-Sub My-Way {user_name.name }.\
  \nHave a great day!!"])
 
     print(receipt_table)
 
 
-print_reciept()
+# print_receipt()
 
 
 # this block of code is taken from stackoverflow
@@ -667,7 +664,7 @@ print_reciept()
 def restart():
     """
     Restart the whole program if the user selects y
-    or ends the code if anthing else is pressed
+    or ends the code if anything else is pressed
     """
     while True:
         order_again = input(Fore.GREEN + "\nWould you like to order another \
@@ -676,10 +673,45 @@ sandwich? 'y' or 'n': " + Style.RESET_ALL).lower()
         if order_again == "y":
             os.execl(sys.executable, os.path.abspath(__file__), *sys.argv)
         elif order_again == "n":
-            print(f"\n\nThank you {name}, have a lovely day! Bye...\n\n")
+            print(f"\n\nThank you {user_name.name }, \
+have a lovely day! Bye...\n\n")
             sys.exit(0)
         else:
             print("\nPlease type 'y' or 'n' ")
 
 
-restart()
+# restart()
+
+
+def main():
+    """
+    Calls the required function from the code in required sequence.
+    """
+    user_name()
+    sandwich_size()
+    bread_names()
+    choose_bread()
+    sandwich_names()
+    choose_sandwich()
+    choose_cheese()
+    salad_names()
+    get_salad_from_user()
+    sauce_names()
+    get_sauce_from_user()
+    discount_price()
+
+    # Records all the details in customer_details list(created in line 26)
+    # and this list gets updated in the customer page of google sheet.
+
+    customer_details.append(str(today))
+    customer_details.append(dt_string)
+    customer_details.append(random_num)
+    customer.append_row(customer_details)
+
+    print_receipt()
+    restart()
+
+
+# main()
+if __name__ == "__main__":
+    main()
