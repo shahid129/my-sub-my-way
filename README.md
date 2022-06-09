@@ -1,31 +1,58 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# My-Sub My-Way
+![Main Page](/assets/images/main_image.png)
 
-Welcome Shahidul Islam,
+[View Live Project Here](https://my-sub-my-way.herokuapp.com/)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## TABLE OF CONTENTS
+- [User Experience/User Interface](#user-experience-or-user-interface)
+- [Design](#design)
+- [Features](#features)
+- [Testing](#testing)
+- [Technology](#technology)
+- [Deployment](#deployment) 
+- [Credits](#credits)
+- [Acknowledgement](#acknowledgement)
 
-## Reminders
+## User Experience or User Interface
+### First Time User.
+As a first time user I want:
+- The user to have a warm welcome
+- The user to have a clear idea of the ordering system.
+- The ordering system to function properly and ordering system to be intuitive.
+- The user can understand what the ordering system is about just from the name of the ordering system.
+- The user to know the rules of the ordering system.
+- Thes system gives the user hint of either to enter number or letters
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+### As Return or Frequent User.
+As a return or frequent user I want:
+- To be able to be able to be aknowledged by the system.
+- The system to display the last order
 
-## Creating the Heroku app
+### As a Owner of The Game.
+As a owner of the game, I want:
+- The user to know how to order from the main screen.
+- The user to be given option, that if they would like to order more sub.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+## Design
+Basic design of the game was built using the lucidchart website. The logic of the game was impletented in the 
+chart. Once I was satisfied with the logic, I started to code. I tried not to use too many colors and make the terminal look messy.
+The colors used are as follows:
+- Green - for user inputs
+- White - Most of the text
+- Red - Whenever the code handled an error and throws an information to the user.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+[Flow Chart](assets/images/flow-chart.png)
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+>A lot of help was taken from all over the internet and the main ones are - 
+- [Stack Overflow](https://stackoverflow.com/)
+- [W3Schools](https://www.w3schools.com/)
+- [CSS Tricks](https://css-tricks.com/)
+- [Youtube](https://www.youtube.com/)
+- [FreeCodeCamp](https://www.freecodecamp.org/)
 
-Connect your GitHub repository and deploy as normal.
+## ACKNOWLEDGEMENT
+> I would like to thank my tutor, Kasia, and my mentor Ronan, for their invaluable help and guidance throughout the process. The slack group Jan-2022-lwetb, and all the fellow mates from slack
 
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+# THANK YOU
+Thanks to my fellow slackers for reviewing my project and a very special thank you to my mentor Ronan, for his invaluable advice and resources throughout the development of this project. SPECIAL THANKS TO MY WIFE FOR BUYING ME ALL THE TIME IN THE WORLD TO DO THE COURSE AND THE PROJECTS.
