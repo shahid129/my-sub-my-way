@@ -46,7 +46,7 @@ The colors used are as follows:
 - White - Most of the text
 - Red - Whenever the code handled an error and throws an information to the user.
 
-[Flow Chart Image](assets/images/flow-chart.png)
+![Flow Chart Image](assets/images/flow-chart.png)
 
 
 ## Features
@@ -56,14 +56,16 @@ There are a lot of features in this website and they are as follows -
     - There is/are a special character in the name.
     - There is/ are numbers in the name.
     - Or there is an empty name input.
-    Image of Error when name is not accepted. [Image](assets/images/name_error.png)
+    - Image of Error when name is not accepted. ![Image](assets/images/name_error.png)
+
 - The user receives a warm welcome by saying "Welcome to My-Sub My-Way Username"
 - When user is asked to choose either footlong or six inch, the user has only option to type 'a' or 'b'.
+
 - The terminal throws a message to the user when -
     - The user types a number
     - the user types any letter but a or b
     - The user inputs nothing and press enter
-    Image of Error when typed wrong and  is not accepted. [Image](assets/images/footlong_error.png)
+    - Image of Error when typed wrong and  is not accepted. ![Image](assets/images/footlong_error.png)
 
 - The user is asked to choose what type of bread he/she would like to have.
 - The terminal throws a message to the user when -
@@ -72,24 +74,34 @@ There are a lot of features in this website and they are as follows -
     - The user types a number that is not in the list.
     - The user inputs nothing and presses enter.
     - The uer types special characters.
-    Image of Error when typed wrong and  is not accepted. [Image](assets/images/bread_error.png)
+    - Image of Error when typed wrong and  is not accepted. ![Image](assets/images/bread_error.png)
+
 - The same error pops up for most of the ordering system
 - The user is limited to choose vegetables only six time.
-- The user is limited to choose only three sauces rather than choosing all the sauces. [Image](assets/images/sauce_error.png)
+- The user is limited to choose only three sauces rather than choosing all the sauces. ![Image](assets/images/sauce_error.png)
+
 - Once the order is complete, the ordering system calculates the price and offers the user if they 
    would like to have 15% off their bill.
 - If the user select 'y', the system calculates the bill by taking off 15% off the price.
-- The Receipt is Printed in the end which gives all the details of the order. [Receipt Image](assets/images/receipt.png)
+- The Receipt is Printed in the end which gives all the details of the order. ![Receipt Image](assets/images/receipt.png)
 - Once the order is complete the user is asked if he/she would to order again.
 
-### One of the best features of this system is that, if the username exist in the system, it asks the user if he/she would like to view the last receipt. It always shows the last receipt. [Image of last Receipt](assets/images/last_receipt.png)
+### One of the best features of this system is that, if the username exist in the system, it asks the user if he/she would like to view the last receipt. It always shows the last receipt. 
+![Image of last Receipt](assets/images/last_receipt.png)
+
+- The app imports data by calling an API that is saved in the google spreadsheet. gspread module is used to fetch data.
+![Spreadsheet](assets/images/spreadsheet.png)
+
+- Any information by given by the user while using this app, is saved in the google spreadsheet. The app calls for an API and receives the data from there. Sample image of of user information is in the image below.
+![User Info](assets/images/user_info.png)
+
 
 ## Testing
 Testing was done using the PEP8 Online. 
 - Copy and paste code from run.py file to PEP8 Online checker. 
 - Hit the check code button and it shows if you have any error or not.
 In my case NO ERROR was found and it says ALL RIGHT
-[PEP8 online Check image](assets/images/pep8_online.png)
+![PEP8 online Check image](assets/images/pep8_online.png)
 
 ## Technology
 ### Dev Language Used
@@ -100,7 +112,7 @@ In my case NO ERROR was found and it says ALL RIGHT
 - [GitHub](https://github.com/) was used for version control and to save the app online.
 - [Heroku](https://dashboard.heroku.com/apps/my-sub-my-way) was used to deploy the site.
 
-### Frameworks Used
+### Frameworks/Packages Used
 - os
 - sys
     > os and sys was used to restart the ordering system.
@@ -138,6 +150,55 @@ Each term explained below
 *git commit -m "your message"* A clear short message explaining the updates.
 
 *git push* To push all the recent changes and make it live on the page.
+
+### Setup API
+
+1. Navigate to [Google Cloud Platform](https://cloud.google.com/gcp/?utm_source=google&utm_medium=cpc&utm_campaign=emea-gb-all-en-bkws-all-all-trial-e-gcp-1011340&utm_content=text-ad-none-any-DEV_c-CRE_500227884420-ADGP_Hybrid%20%7C%20BKWS%20-%20EXA%20%7C%20Txt%20~%20GCP%20~%20General%23v1-KWID_43700060384861702-kwd-26415313501-userloc_9041106&utm_term=KW_google%20cloud%20platform-NET_g-PLAC_&gclid=CjwKCAiAvaGRBhBlEiwAiY-yMH6ZzZToth-9fTjp0B_qAE91ulGwN7jIb0KBGW5TbmN8Z5w9JE1noRoCSmIQAvD_BwE&gclsrc=aw.ds)
+
+2. Create a free account(if you don't have an account) by clicking 'Get Started for Free' button in the upper right corner.
+
+3. Once the account is created, click on the Create New Project with a name of your choice.
+
+4. Head over to the hamburger menu and click 'Library' and select API followed by Services.
+
+5. Search Google Drive API and enable it.
+
+6. Search Google Sheet API and enable it.
+
+7. In the top left, click Create credentials and select Google drive from the dropdown menu.
+
+8. Select Application Data.
+
+9. Select NO, I'm Not.
+
+10. Click Next.
+
+11. Enter the Service Account name (the name for your chosen project).
+
+12. Click create and continue.
+
+13. In the Role Dropdown box select Basic and click continue.
+
+14. On the next page click Done.
+
+15. Click on the service account that has been created and navigate to the Keys Tab
+
+16. Click on Add Key and select Create New Key.
+
+17. Select JSON and click Create. This will download the File on you machine.
+
+18. From you local machine, add the downloaded file to gitpod and rename it to creds.json.
+
+19. Open creds.json and copy the value for client's email.
+
+20. Go to google sheet and click share, paste the email address, make sure to assign the role as Editor.
+
+- Enable the API
+1. Within the gitpod terminal enter the following code
+    'pip3 install gspread google-auth'
+
+2. Adding the code(the image below) in the gitpod enable to talk with the google spreadsheet.
+![API](assets/images/api.png)
 
 
 ### Deploying Locally
@@ -196,5 +257,5 @@ Before you deploy to heroku, make sure to add the following code in gitpod to ad
 ## ACKNOWLEDGEMENT
 > I would like to thank my tutor, Kasia, and my mentor Ronan, for their invaluable help and guidance throughout the process. The slack group Jan-2022-lwetb, and all the fellow mates from slack
 
-# THANK YOU
+## THANK YOU
 Thanks to my fellow slackers for reviewing my project and a very special thank you to my mentor Ronan, for his invaluable advice and resources throughout the development of this project. SPECIAL THANKS TO MY WIFE FOR BUYING ME ALL THE TIME IN THE WORLD TO DO THE COURSE AND THE PROJECTS.
