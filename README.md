@@ -16,16 +16,16 @@
 ## User Experience or User Interface
 ### First Time User.
 As a first time user I want:
-- The user to have a warm welcome
+- The user to have a warm welcome.
 - The user to have a clear idea of the ordering system.
 - The ordering system to function properly and ordering system to be intuitive.
-- The user can understand what the ordering system is about just from the name of the ordering system.
+- The user can understand what the ordering system is about just from its name.
 - The user to know the rules of the ordering system.
 - The system gives the user hint of either to enter number or letters
 
 ### As Return or Frequent User.
 As a return or frequent user I want:
-- To be able to be able to be acknowledged by the system.
+- To be able to be be acknowledged by the system.
 - The system to display the last order
 
 ### As a Owner of The Game.

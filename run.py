@@ -55,7 +55,7 @@ tprint("\n\nMy-Sub My-Way\n\n", font="cybermedum")
 def user_name():
     """
     User inputs their name, and function checks if
-    the uesr name is valid, without space, no numbers.
+    the user name is valid, without space, no numbers.
     It also checks if the name is less than 2 or more than 25 character
     """
     while True:
@@ -83,7 +83,7 @@ less than 9 character. Try again." + Style.RESET_ALL)
 
 def last_receipt():
     """
-    A Function that seraches for customer details by their name in
+    A Function that searches for customer details by their name in
     the customer spread sheet and fetches all the details
     about their last order.
     """
@@ -96,10 +96,10 @@ def last_receipt():
 
     while True:
         if user_name.name in values_list:
-            latest_recipt = input(Fore.GREEN + "\n" + user_name.name + ", We found your details, \
+            latest_receipt = input(Fore.GREEN + "\n" + user_name.name + ", We found your details, \
 would you like to view your last recept? \
 Type 'y' or 'n': " + Style.RESET_ALL).lower()
-            if latest_recipt == "y":
+            if latest_receipt == "y":
                 print("\nFetching your latest receipt...\n")
                 time.sleep(2)
                 table.field_names = (["My-Sub My-Way"])
@@ -119,9 +119,9 @@ Type 'y' or 'n': " + Style.RESET_ALL).lower()
                 time.sleep(1.5)
                 print("\nWell, lets' take your order.")
                 break
-            elif latest_recipt == "n":
+            elif latest_receipt == "n":
                 time.sleep(1.5)
-                print("\nPerfact, lets take your order")
+                print("\nPerfect, lets take your order")
                 break
             else:
                 print("\nPlease type 'y' or 'n'")
@@ -365,7 +365,7 @@ you like to have? " + Style.RESET_ALL))
                 print("\nOnly one type of cheese is allowed")
                 continue
 
-            # the variable "which_cheeae" is assigned to the
+            # the variable "which_cheese" is assigned to the
             # function choose_cheese so that it can be
             # accessed from the while loop at the bottom
             for choose_cheese.which_cheese in selected_cheese:
@@ -402,7 +402,7 @@ def choose_cheese():
 to have cheese? y/n " + Style.RESET_ALL).lower()
         if cheese == "y":
 
-            # Returns theese two function if users wants cheese
+            # Returns these two function if users wants cheese
             return cheese_names(), select_cheese()
         elif cheese == "n":
             print("\nThank you")
@@ -429,7 +429,7 @@ def salad_names():
     for i in range(1, 7):
         num.append(i)
     time.sleep(1)
-    # the variable names at bottim is assigned to the
+    # the variable names at bottom is assigned to the
     # function salad_names  so that it can be
     # accessed from other functions
 
@@ -550,7 +550,7 @@ would you like to have? " + Style.RESET_ALL))
             # convert the list of items to integer
             selected_sauce = [int(i) for i in choose_sauce]
 
-            # Restricts user from unlimited selction of salads
+            # Restricts user from unlimited selection of salads
             if len(choose_sauce) > 3:
                 print("\nMaximum 3 Sauces allowed")
                 continue
@@ -601,7 +601,7 @@ that you are eligible of '15%' discount. \
 Would you like to take that discount? \
 \nType 'y' or 'n: " + Style.RESET_ALL).lower()
         if discount == "y":
-            print("\nCalulating discounted price...")
+            print("\nCalculating discounted price...")
             time.sleep(2)
             new_price = round(food_price() * 0.85, 2)
             print(f"\nDiscounted New Price is €{new_price}")
@@ -612,7 +612,7 @@ Would you like to take that discount? \
             customer_details.append(food_price())
             break
         else:
-            print("\nPlease type 'y" or 'n')
+            print("\nPlease type 'y' or 'n'")
 
 
 # discount_price()
@@ -624,8 +624,8 @@ def print_receipt():
     in google sheet.
     """
     # Obtain the values from the last row of google sheet
-    cusomter_all_value = customer.get_all_values()
-    last_row_customer = cusomter_all_value[-1]
+    customer_all_value = customer.get_all_values()
+    last_row_customer = customer_all_value[-1]
 
     receipt_table = PrettyTable()
     print("\nPrinting Receipt\n")

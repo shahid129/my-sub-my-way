@@ -25,5 +25,8 @@
    "editor.defaultFormatter": "HookyQR.beautify",
    "[python]": {
       "editor.defaultFormatter": "ms-python.python"
-   }
+   },
+   "cSpell.words": [
+      "footlong"
+   ]
 }
