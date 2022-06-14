@@ -333,7 +333,7 @@ def cheese_names():
     for chse_name in cheese_list:
         cheese_name.append(chse_name)
     num = []
-    for i in range(1, 4):
+    for i in range(0, 4):
         num.append(i)
 
     # Convert num and cheese name to dict
@@ -426,7 +426,7 @@ def salad_names():
     for sld_name in salad_list:
         salad_name.append(sld_name)
     num = []
-    for i in range(1, 7):
+    for i in range(0, 7):
         num.append(i)
     time.sleep(1)
     # the variable names at bottom is assigned to the
@@ -510,7 +510,7 @@ def sauce_names():
     for sce_name in sauce_list:
         sauce_name.append(sce_name)
     num = []
-    for i in range(1, 7):
+    for i in range(0, 7):
         num.append(i)
     time.sleep(1)
     # the variable "names" at bottom is assigned to the
