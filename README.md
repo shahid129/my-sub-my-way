@@ -103,6 +103,25 @@ Testing was done using the PEP8 Online.
 In my case NO ERROR was found and it says ALL RIGHT
 ![PEP8 online Check image](assets/images/pep8_online.png)
 
+ ### Automatic Testing With Pytest
+
+Automatic Testing was done using pytest frameworks.
+![Pytest](/assets/images/pytest.png)
+- A file named test.py is added.
+- Install pytest by the following command in the terminal
+
+      pip3 install pytest
+- Import pytest in the module
+- Each function is named by test_**.py, so that the pytest frameworks know this exact function to be tested.
+- Each function is checked and tested by test.py module.
+- Where there is nothing returned by any of the functions in run.py and the function checks for user input, @pytest.fixture is added which provides a dummy input to check if the code is working properly.
+- To check the if the tests were successful, just run the code in the terminal and it says 12 passed in 0.02s (in my case)
+
+      python3 -m pytest test.py
+
+- All the tests ran successfully without error. The image below -
+![Pytest Result](/assets/images/pytest_result.png)
+
 ## Technology
 ### Dev Language Used
 - Python

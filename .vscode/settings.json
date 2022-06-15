@@ -27,6 +27,12 @@
       "editor.defaultFormatter": "ms-python.python"
    },
    "cSpell.words": [
-      "footlong"
-   ]
+      "footlong",
+      "pytest"
+   ],
+   "python.testing.pytestArgs": [
+      "."
+   ],
+   "python.testing.unittestEnabled": false,
+   "python.testing.pytestEnabled": true
 }
