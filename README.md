@@ -21,7 +21,7 @@ As a first time user I want:
 - The ordering system to function properly and ordering system to be intuitive.
 - The user can understand what the ordering system is about just from its name.
 - The user to know the rules of the ordering system.
-- The system gives the user hint of either to enter number or letters
+- The system gives the user a hint as to whether to enter number or letters
 
 ### As Return or Frequent User.
 As a return or frequent user I want:
@@ -31,16 +31,16 @@ As a return or frequent user I want:
 ### As a Owner of The Game.
 As a owner of the game, I want:
 - The user to know how to order from the main screen.
-- The user to be given option, that if they would like to order more sub.
+- The user to be given the option to order multiple subs.
 
 ## Design
 
 ### Why I chose this project 
-When it comes to building and designing a project, the first question that comes to my mind is, what am I going to build? when I googled for ideas it gave me millions of options and ideas that I could do. Games like tic tac toe, hangman, battleship, guess the number, and building a calculator are great options. I thought of making a hangman game. When I started building hangman, I found myself in a state of lost. The codes of these games are easily available all over the internet and I found myself looking for a solution all the time. This is when I said I need to build something by myself. I need to sweat my brain because that's the only way to learn something. That is when I came with the idea of building this project. The project calls an API to send and receive data and it manipulates those data to display required information to the user.
+When it comes to building and designing a project, the first question that comes to my mind is, what am I going to build? when I googled for ideas it gave me millions of options and ideas that I could do. Games like tic tac toe, hangman, battleship, guess the number, and building a calculator are great options. I thought of making a hangman game. When I started building hangman, I found myself to be uninspired. The code for this game was easily available on the internet and i found myself searching for the answers rather than thinking for myself. This is when I said I need to build something by myself. I need to sweat my brain because that's the only way to learn something. That is when I came with the idea of building this project. The project calls an API to send and receive the data and it then manipulates this data to display the required information to the user.
 
 ### Basic Design
 Basic design of the game was built using the lucidchart website. The logic of the game was implemented in the 
-chart. Once I was satisfied with the logic, I started to code. I tried not to use too many colors and make the terminal look messy.
+chart. Once I was satisfied with the logic, I started to code. I tried not to use too many colors so that the terminal would not look messy.
 The colors used are as follows:
 - Green - for user inputs
 - White - Most of the text
@@ -53,8 +53,8 @@ The colors used are as follows:
 There are a lot of features in this website and they are as follows -
 - The user can enter their last name and the name should be more than two characters and less than 25 characters.
 - The terminal throws a message to the user when -
-    - There is/are a special character in the name.
-    - There is/ are numbers in the name.
+    - There are any special characters in the name.
+    - There are any numbers in the name.
     - Or there is an empty name input.
     - Image of Error when name is not accepted. ![Image](assets/images/name_error.png)
 
@@ -62,9 +62,10 @@ There are a lot of features in this website and they are as follows -
 - When user is asked to choose either footlong or six inch, the user has only option to type 'a' or 'b'.
 
 - The terminal throws a message to the user when -
-    - The user types a number
-    - the user types any letter but a or b
-    - The user inputs nothing and press enter
+    - The user types a number.
+    - the user types any letter but a or b.
+    - The user inputs nothing and press enter.
+    - The user types special characters.
     - Image of Error when typed wrong and  is not accepted. ![Image](assets/images/footlong_error.png)
 
 - The user is asked to choose what type of bread he/she would like to have.
@@ -73,14 +74,14 @@ There are a lot of features in this website and they are as follows -
     - The user types multiple numbers instead of one number.
     - The user types a number that is not in the list.
     - The user inputs nothing and presses enter.
-    - The uer types special characters.
+    - The user types special characters.
     - Image of Error when typed wrong and  is not accepted. ![Image](assets/images/bread_error.png)
 
 - The same error pops up for most of the ordering system
 - The user is limited to choose vegetables only six time.
 - The user is limited to choose only three sauces rather than choosing all the sauces. ![Image](assets/images/sauce_error.png)
 
-- Once the order is complete, the ordering system calculates the price and offers the user if they 
+- Once the order is complete, the ordering system calculates the price and asks the user if they 
    would like to have 15% off their bill.
 - If the user select 'y', the system calculates the bill by taking off 15% off the price.
 - The Receipt is Printed in the end which gives all the details of the order. ![Receipt Image](assets/images/receipt.png)
@@ -92,7 +93,7 @@ There are a lot of features in this website and they are as follows -
 - The app imports data by calling an API that is saved in the google spreadsheet. gspread module is used to fetch data.
 ![Spreadsheet](assets/images/spreadsheet.png)
 
-- Any information by given by the user while using this app, is saved in the google spreadsheet. The app calls for an API and receives the data from there. Sample image of of user information is in the image below.
+- Any information given by the user while using this app, is saved in the google spreadsheet. The app calls for an API and receives the data from there. Sample image of of user information is in the image below.
 ![User Info](assets/images/user_info.png)
 
 
@@ -272,9 +273,10 @@ Before you deploy to heroku, make sure to add the following code in gitpod to ad
 - [Stack Overflow](https://stackoverflow.com/)
 - [W3Schools](https://www.w3schools.com/)
 - [FreeCodeCamp](https://www.freecodecamp.org/)
+- [Tutorialspoint](https://www.tutorialspoint.com/pytest/pytest_fixtures.htm) (For Pytest & Fixture)
 
 ## ACKNOWLEDGEMENT
-> I would like to thank my tutor, Kasia, and my mentor Ronan, for their invaluable help and guidance throughout the process. The slack group Jan-2022-lwetb, and all the fellow mates from slack
+> I would like to thank my tutor, Kasia, and my mentor Ronan, for their invaluable help and guidance throughout the process. The slack group Jan-2022-lwetb, and all the fellow mates from slack.
 
 ## THANK YOU
-Thanks to my fellow slackers for reviewing my project and a very special thank you to my mentor Ronan, for his invaluable advice and resources throughout the development of this project. SPECIAL THANKS TO MY WIFE FOR BUYING ME ALL THE TIME IN THE WORLD TO DO THE COURSE AND THE PROJECTS.
+>Thanks to my fellow slackers for reviewing my project and a very special thank you to my mentor Ronan, for his invaluable advice and resources throughout the development of this project. SPECIAL THANKS TO MY WIFE FOR BUYING ME ALL THE TIME IN THE WORLD TO DO THE COURSE AND THE PROJECTS.
