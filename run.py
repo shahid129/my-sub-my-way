@@ -68,7 +68,7 @@ a valid name" + Style.RESET_ALL)
                 continue
             elif len(user_name.name) <= 2 or len(user_name.name) > 25:
                 print(Fore.RED + f"Your name '{user_name.name}' should be more than 2 character or \
-less than 9 character. Try again." + Style.RESET_ALL)
+less than 25 character. Try again." + Style.RESET_ALL)
                 continue
             else:
                 customer_details.append(user_name.name)
@@ -225,11 +225,11 @@ you like to have? " + Style.RESET_ALL))
                 continue
 
         except ValueError:
-            print(Fore.RED + f"\nPlease type a number between 1 to 4\
+            print(Fore.RED + f"\nPlease type a number between 1 to 4 \
 to choose your bread. {brd} is not valid choice." + Style.RESET_ALL)
         except AttributeError:
             print(Fore.RED + "\nPlease type a number between \
-                1 to 4" + Style.RESET_ALL)
+1 to 4" + Style.RESET_ALL)
 
 
 def sandwich_names():
@@ -285,8 +285,8 @@ would you like to have? " + Style.RESET_ALL))
                     print(f"\nYou selected\
  {sandwich_names.names[choose_sandwich.choose]}")
                 else:
-                    print(f"\nPlease Check your selection. {choose}\
- not all are on my list.")
+                    print(f"\nPlease Check your selection. {choose} \
+not all are on my list.")
                     break
 
             if choose_sandwich.choose in sandwich_names.names:
@@ -369,11 +369,11 @@ you like to have? " + Style.RESET_ALL))
                 continue
 
         except ValueError:
-            print(Fore.RED + f"\nPlease type a number between 1, 2 or 3 \
+            print(Fore.RED + f"\nPlease type a number between 0, 1, 2 or 3 \
 to choose cheese. {which_cheese} is not valid choice." + Style.RESET_ALL)
         except AttributeError:
             print(Fore.RED + "\nPlease type a number between\
-1, 2 or 3" + Style.RESET_ALL)
+0, 1, 2 or 3" + Style.RESET_ALL)
 
 
 def choose_cheese():
@@ -433,7 +433,7 @@ def get_salad_from_user():
     while True:
         try:
             # accept input from user as list of items
-            print("\nPlease type in the following format 123456,\
+            print("\nPlease type in the following format 0123456,\
  without space between numbers")
             choose_salad = list(input(Fore.GREEN + "\nWhat salad would \
 you like to have? " + Style.RESET_ALL))
@@ -444,7 +444,7 @@ you like to have? " + Style.RESET_ALL))
             # convert the list of items to integer
             selected_salad = [int(i) for i in choose_salad]
 
-            # Restricts user from unlimited selction of salads
+            # Restricts user from unlimited selection of salads
             if len(choose_salad) > 6:
                 print("\nMaximum 6 Salads allowed")
                 continue
@@ -468,7 +468,7 @@ you like to have? " + Style.RESET_ALL))
 
         except ValueError:
             print(Fore.RED + f"\nPlease type a number between 1 to 6 \
-to choose your salad.{choose_salad} is not valid." + Style.RESET_ALL)
+to choose your salad. {choose_salad} is not valid." + Style.RESET_ALL)
         except AttributeError:
             print(Fore.RED + "\nPlease type a number \
 between 1 to 6" + Style.RESET_ALL)
@@ -508,7 +508,7 @@ def get_sauce_from_user():
     """
     while True:
         try:
-            print("\nPlease type in the following format 123456, \
+            print("\nPlease type in the following format 0123456, \
 without space between numbers")
 
             # accept input from user as list of items
@@ -545,11 +545,11 @@ would you like to have? " + Style.RESET_ALL))
                 continue
 
         except ValueError:
-            print(Fore.RED + f"\nPlease type a number between 1 to 6 \
+            print(Fore.RED + f"\nPlease type a number between 0 to 6 \
 to choose your salad.{choose_sauce} is not valid." + Style.RESET_ALL)
         except AttributeError:
             print(Fore.RED + "\nPlease type a number between \
-1 to 6" + Style.RESET_ALL)
+0 to 6" + Style.RESET_ALL)
 
 
 def discount_price():
