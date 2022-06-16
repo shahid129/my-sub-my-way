@@ -3,9 +3,6 @@ Import pytest to check the code in run.py
 """
 import pytest
 
-# python3 -m pytest test.py
-# python3 -m pytest -k divisible -v
-
 
 def test_food_price():
     """
@@ -35,8 +32,6 @@ def fixture_new_latest_receipt():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input = "y" or "n"
-    # return input
 
 
 def test_last_receipt(new_latest_receipt):
@@ -51,8 +46,6 @@ def fixture_sub():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input = "a" or "b"
-    # return input
 
 
 def test_sandwich_size(sub):
@@ -60,14 +53,6 @@ def test_sandwich_size(sub):
     The function to test the code in sandwich_size() in run.py
     """
     assert sub == "a" or "b"
-
-
-# # dummy bread list
-# # bread_list = ["Hearty", "Italian", "Brown", "Herbs & Cheese"]
-
-
-# def test_bread_names():
-#     assert bread_names
 
 
 @pytest.fixture(name="bread")
@@ -86,13 +71,6 @@ def test_choose_bread(bread):
     assert bread == "1"
 
 
-# def test_sandwich_names():
-#     """
-#     The function to test the code in sandwich_names() in run.py
-#     """
-#     assert sandwich_names
-
-
 @pytest.fixture(name="new_choose_sandwich")
 def fixture_new_choose_sandwich():
     """
@@ -109,17 +87,11 @@ def test_sandwich_names(new_choose_sandwich):
     assert new_choose_sandwich == "1"
 
 
-# def test_cheese_names():
-#     assert cheese_names
-
-
 @pytest.fixture(name="new_select_cheese")
 def fixture_new_select_cheese():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input = "1" or "2" or "3"
-    # return input
 
 
 def test_select_cheese(new_select_cheese):
@@ -134,8 +106,6 @@ def fixture_new_choose_cheese():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input = "y" or "n"
-    # return input
 
 
 def test_choose_cheese(new_choose_cheese):
@@ -145,20 +115,11 @@ def test_choose_cheese(new_choose_cheese):
     assert new_choose_cheese == "y" or "n"
 
 
-# def new_salad_names():
-#     """
-#     The function to test the code in salad_names() in run.py
-#     """
-#     assert salad_names
-
-
 @pytest.fixture(name="new_get_salad_from_user")
 def fixture_new_get_salad_from_user():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input == "1" or "2" or "3"
-    # return input
 
 
 def test_get_salad_from_user(new_get_salad_from_user):
@@ -168,17 +129,11 @@ def test_get_salad_from_user(new_get_salad_from_user):
     assert new_get_salad_from_user == "1" or "2" or "3"
 
 
-# def test_sauce_names():
-#     assert sauce_names
-
-
 @pytest.fixture(name="new_get_sauce_from_user")
 def fixture_new_get_sauce_from_user():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input == "1" or "2" or "3"
-    # return input
 
 
 def test_get_sauce_from_user(new_get_sauce_from_user):
@@ -193,8 +148,6 @@ def fixture_new_discount_price():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input == "y" or "n"
-    # return input
 
 
 def test_discount_price(new_discount_price):
@@ -209,8 +162,6 @@ def fixture_new_restart():
     """
     A function in fixture that can accept user input to test the code
     """
-    # input == "y" or "n"
-    # return input
 
 
 def test_restart(new_restart):

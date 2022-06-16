@@ -78,7 +78,6 @@ less than 9 character. Try again." + Style.RESET_ALL)
             print(f"\nWelcome to My-Sub My-Way {user_name.name}")
         break
     return user_name.name
-# user_name()
 
 
 def last_receipt():
@@ -162,9 +161,6 @@ a) Footlong b) 6 Inch\n" + Style.RESET_ALL).lower()
     return sub
 
 
-# sandwich_size()
-
-
 def bread_names():
     """
     Prints a list of bread list from the spreadsheet.
@@ -187,9 +183,6 @@ def bread_names():
     bread_table.add_row(bread_name)
     print(bread_table)
     return bread_name
-
-
-# bread_names()
 
 
 def choose_bread():
@@ -239,9 +232,6 @@ to choose your bread. {brd} is not valid choice." + Style.RESET_ALL)
                 1 to 4" + Style.RESET_ALL)
 
 
-# choose_bread()
-
-
 def sandwich_names():
     """
     A function to fetch all the name of sandwich from
@@ -264,9 +254,6 @@ def sandwich_names():
     sandwich_table.add_row(sandwich_name)
     print(sandwich_table)
     return sandwich_name
-
-
-# sandwich_names()
 
 
 def choose_sandwich():
@@ -317,9 +304,6 @@ to choose your bread. {choose} is not valid choice." + Style.RESET_ALL)
 between 1 to 6" + Style.RESET_ALL)
 
     return choose
-
-
-# choose_sandwich()
 
 
 def cheese_names():
@@ -413,9 +397,6 @@ to have cheese? y/n " + Style.RESET_ALL).lower()
             print("\nPlease type 'y' or 'n' ")
 
 
-# choose_cheese()
-
-
 def salad_names():
     """
     A function to fetch all the name of salads from
@@ -442,9 +423,6 @@ def salad_names():
     print(salad_table)
 
     return salad_name
-
-
-# salad_names()
 
 
 def get_salad_from_user():
@@ -481,7 +459,6 @@ you like to have? " + Style.RESET_ALL))
                 else:
                     print(f"\nPlease Check your selection {choose_salad}\
  not all are on my list.")
-                    # salad_names()
                     break
 
             if get_salad_from_user.salads in salad_names.names:
@@ -495,9 +472,6 @@ to choose your salad.{choose_salad} is not valid." + Style.RESET_ALL)
         except AttributeError:
             print(Fore.RED + "\nPlease type a number \
 between 1 to 6" + Style.RESET_ALL)
-
-
-# get_salad_from_user()
 
 
 def sauce_names():
@@ -525,9 +499,6 @@ def sauce_names():
     print(sauce_table)
 
     return sauce_name
-
-
-# sauce_names()
 
 
 def get_sauce_from_user():
@@ -581,9 +552,6 @@ to choose your salad.{choose_sauce} is not valid." + Style.RESET_ALL)
 1 to 6" + Style.RESET_ALL)
 
 
-# get_sauce_from_user()
-
-
 def discount_price():
     """
     Calculates 15% off to the price of either footlong
@@ -613,9 +581,6 @@ Would you like to take that discount? \
             break
         else:
             print("\nPlease type 'y' or 'n'")
-
-
-# discount_price()
 
 
 def print_receipt():
@@ -655,9 +620,6 @@ def print_receipt():
     print(receipt_table)
 
 
-# print_receipt()
-
-
 # this block of code is taken from stackoverflow
 # Restart the whole program if the user selects y
 
@@ -680,9 +642,6 @@ have a lovely day! Bye...\n\n")
             print("\nPlease type 'y' or 'n' ")
 
 
-# restart()
-
-
 def main():
     """
     Calls the required function from the code in required sequence.
@@ -700,7 +659,7 @@ def main():
     get_sauce_from_user()
     discount_price()
 
-    # Records all the details in customer_details list(created in line 26)
+    # Records all the details in customer_details list(created in line 40)
     # and this list gets updated in the customer page of google sheet.
 
     customer_details.append(str(today))
@@ -712,6 +671,5 @@ def main():
     restart()
 
 
-# main()
 if __name__ == "__main__":
     main()
