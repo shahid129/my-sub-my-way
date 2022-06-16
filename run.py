@@ -372,7 +372,7 @@ you like to have? " + Style.RESET_ALL))
             print(Fore.RED + f"\nPlease type a number between 0, 1, 2 or 3 \
 to choose cheese. {which_cheese} is not valid choice." + Style.RESET_ALL)
         except AttributeError:
-            print(Fore.RED + "\nPlease type a number between\
+            print(Fore.RED + "\nPlease type a number between \
 0, 1, 2 or 3" + Style.RESET_ALL)
 
 
