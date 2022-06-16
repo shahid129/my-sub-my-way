@@ -567,7 +567,7 @@ def discount_price():
         discount = input(Fore.GREEN + "\nI can see on my system, \
 that you are eligible of '15%' discount. \
 Would you like to take that discount? \
-\nType 'y' or 'n: " + Style.RESET_ALL).lower()
+\nType 'y' or 'n': " + Style.RESET_ALL).lower()
         if discount == "y":
             print("\nCalculating discounted price...")
             time.sleep(2)

@@ -6,7 +6,7 @@ import pytest
 
 def test_food_price():
     """
-    The function test the code for food_price() in run.py
+    The function to test the code for food_price() in run.py
     """
     assert float(round(2))
 
@@ -22,7 +22,7 @@ def fixture_my_name():
 
 def test_user_name(my_name):
     """
-    The function test the code for user_name() in run.py
+    The function to test the code for user_name() in run.py
     """
     assert my_name == 'shahid'
 
@@ -36,7 +36,7 @@ def fixture_new_latest_receipt():
 
 def test_last_receipt(new_latest_receipt):
     """
-    The function test the code for user_name() in run.py
+    The function to test the code for last_receipt() in run.py
     """
     assert new_latest_receipt == "y" or "n"
 
